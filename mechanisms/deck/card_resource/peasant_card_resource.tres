@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://c6xigi062g1kj"]
+
+[ext_resource type="Resource" uid="uid://cxdigq3v76csn" path="res://cards/card_attributes/peasant_attributes.tres" id="1_mumu2"]
+[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://mechanisms/deck/card_resource/card_resource.gd" id="1_tw118"]
+
+[resource]
+script = ExtResource("1_tw118")
+card_name = "PEASANT"
+card_attributes = ExtResource("1_mumu2")
+metadata/_custom_type_script = "uid://dff6lt4yc4q50"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjxy2wn68fdbi"]
+
+[ext_resource type="Script" uid="uid://dmslqg1m16dg0" path="res://cards/misc_card_scenes/card_sprite_globalpos_self_destruct.gd" id="1_i26w5"]
+
+[node name="CardSpriteGlobalposMarker" type="Marker2D"]
+top_level = true
+script = ExtResource("1_i26w5")

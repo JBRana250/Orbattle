@@ -1,0 +1,122 @@
+[gd_scene load_steps=23 format=3 uid="uid://f1myiq461mwn"]
+
+[ext_resource type="Script" uid="uid://bvjk0j8ankghq" path="res://mechanisms/card/card.gd" id="1_f61jr"]
+[ext_resource type="Script" uid="uid://cc6ipm0omqeuc" path="res://mechanisms/drag_and_drop/card_drag.gd" id="1_nwofj"]
+[ext_resource type="PackedScene" uid="uid://chq6dt8qjp6p3" path="res://cards/card_sprite.tscn" id="3_jsqqk"]
+[ext_resource type="Resource" uid="uid://dodp2qehttmo7" path="res://mechanisms/drag_and_drop/current_drag_card_resource.tres" id="4_1de77"]
+[ext_resource type="Script" uid="uid://cks65xy8pna8g" path="res://mechanisms/card/components/card_placement_validity_component.gd" id="7_hel13"]
+[ext_resource type="Script" uid="uid://cxsy4g3gfc8ei" path="res://mechanisms/card/components/card_sprite_change_component.gd" id="8_auvip"]
+[ext_resource type="PackedScene" uid="uid://bjxy2wn68fdbi" path="res://cards/misc_card_scenes/card_sprite_globalpos_marker.tscn" id="9_1de77"]
+[ext_resource type="Script" uid="uid://cjd1d5dgl8ujc" path="res://mechanisms/card/components/card_modulate_component.gd" id="9_geen5"]
+[ext_resource type="Resource" uid="uid://dd810ai8vpyoe" path="res://mechanisms/deck/graveyard_resource/graveyard_resource.tres" id="10_0tfah"]
+[ext_resource type="Script" uid="uid://dfx7uh6fu47fg" path="res://mechanisms/states/card/card_fsm.gd" id="10_iruc6"]
+[ext_resource type="Resource" uid="uid://kdrsmfb6tfud" path="res://mechanisms/deck/deck_resource/deck_resource.tres" id="11_2eeoa"]
+[ext_resource type="Script" uid="uid://bm1sixiomyy8r" path="res://mechanisms/states/card/battlefield_valid.gd" id="11_8uw76"]
+[ext_resource type="Resource" uid="uid://r07turfc5ynk" path="res://mechanisms/deck/hand_resource/hand_resource.tres" id="11_hwwr4"]
+[ext_resource type="Script" uid="uid://bk61b7o8sgrgf" path="res://mechanisms/card/components/use_card_component.gd" id="11_iootb"]
+[ext_resource type="PackedScene" uid="uid://clbei0ok3vyjf" path="res://summons/summon.tscn" id="12_0tfah"]
+[ext_resource type="Script" uid="uid://25atu1sp2o54" path="res://mechanisms/states/card/battlefield_invalid.gd" id="12_1de77"]
+[ext_resource type="Script" uid="uid://sqdeulpq8i24" path="res://mechanisms/card/components/card_init_component.gd" id="13_2eeoa"]
+[ext_resource type="Script" uid="uid://bv0tl8q1q05wf" path="res://mechanisms/states/card/idle.gd" id="13_iootb"]
+[ext_resource type="Script" uid="uid://b24yviythayq6" path="res://mechanisms/states/card/outside_battlefield.gd" id="14_0tfah"]
+[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://mechanisms/deck/card_resource/null_card_resource.tres" id="14_1sf5n"]
+[ext_resource type="Script" uid="uid://b00l0ti6y03ie" path="res://mechanisms/card/components/card_relocation_component.gd" id="16_acvkr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivai2"]
+radius = 62.5
+
+[node name="Card" type="Node2D" node_paths=PackedStringArray("card_sprite_change_component", "card_modulate_component", "card_init_component", "card_drag_component", "card_relocation_component", "card_sprite", "card_sprites", "state_machine")]
+script = ExtResource("1_f61jr")
+card_sprite_change_component = NodePath("Components/CardSpriteChangeComponent")
+card_modulate_component = NodePath("Components/CardModulateComponent")
+card_init_component = NodePath("Components/CardInitComponent")
+card_drag_component = NodePath("Components/CardDragComponent")
+card_relocation_component = NodePath("Components/CardRelocationComponent")
+card_sprite = NodePath("CardSprites/CardSprite")
+card_sprites = NodePath("CardSprites")
+state_machine = NodePath("StateMachine")
+valid_placement = true
+current_drag_card_resource = ExtResource("4_1de77")
+
+[node name="CardSprites" type="Node2D" parent="."]
+
+[node name="CardSprite" parent="CardSprites" instance=ExtResource("3_jsqqk")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2147483648
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ivai2")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="CardDragComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("card_relocation_component")]
+script = ExtResource("1_nwofj")
+current_drag_card_resource = ExtResource("4_1de77")
+card_relocation_component = NodePath("../CardRelocationComponent")
+hand_resource = ExtResource("11_hwwr4")
+null_card_resource = ExtResource("14_1sf5n")
+
+[node name="CardPlacementValidityComponent" type="Node" parent="Components" node_paths=PackedStringArray("card_sprites", "card_modulate_component")]
+script = ExtResource("7_hel13")
+card_sprites = NodePath("../../CardSprites")
+current_drag_card_resource = ExtResource("4_1de77")
+card_modulate_component = NodePath("../CardModulateComponent")
+
+[node name="CardSpriteChangeComponent" type="Node" parent="Components" node_paths=PackedStringArray("card_sprites", "card_modulate_component")]
+script = ExtResource("8_auvip")
+current_drag_card_resource = ExtResource("4_1de77")
+card_sprites = NodePath("../../CardSprites")
+card_sprite_scene = ExtResource("3_jsqqk")
+globalpos_marker = ExtResource("9_1de77")
+card_modulate_component = NodePath("../CardModulateComponent")
+
+[node name="CardModulateComponent" type="Node" parent="Components"]
+script = ExtResource("9_geen5")
+card_battlefield_modulate = Color(0, 0.980392, 0.588235, 0.588235)
+card_battlefield_invalid_modulate = Color(1, 0, 0, 0.588235)
+
+[node name="UseCardComponent" type="Node2D" parent="Components"]
+script = ExtResource("11_iootb")
+current_drag_card_resource = ExtResource("4_1de77")
+graveyard_resource = ExtResource("10_0tfah")
+hand_resource = ExtResource("11_hwwr4")
+deck_resource = ExtResource("11_2eeoa")
+summon_scene = ExtResource("12_0tfah")
+null_card_resource = ExtResource("14_1sf5n")
+
+[node name="CardInitComponent" type="Node" parent="Components"]
+script = ExtResource("13_2eeoa")
+
+[node name="CardRelocationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("card_drag_component")]
+script = ExtResource("16_acvkr")
+card_drag_component = NodePath("../CardDragComponent")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("battlefield_valid", "battlefield_invalid", "idle", "outside_battlefield", "initial_state")]
+script = ExtResource("10_iruc6")
+battlefield_valid = NodePath("BattlefieldValid")
+battlefield_invalid = NodePath("BattlefieldInvalid")
+idle = NodePath("Idle")
+outside_battlefield = NodePath("OutsideBattlefield")
+initial_state = NodePath("Idle")
+
+[node name="BattlefieldValid" type="Node" parent="StateMachine" node_paths=PackedStringArray("use_card_component")]
+script = ExtResource("11_8uw76")
+use_card_component = NodePath("../../Components/UseCardComponent")
+current_drag_card_resource = ExtResource("4_1de77")
+
+[node name="BattlefieldInvalid" type="Node" parent="StateMachine"]
+script = ExtResource("12_1de77")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("13_iootb")
+
+[node name="OutsideBattlefield" type="Node" parent="StateMachine"]
+script = ExtResource("14_0tfah")
+
+[connection signal="body_entered" from="Area2D" to="Components/CardDragComponent" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Components/CardDragComponent" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="Components/CardDragComponent" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Components/CardDragComponent" method="_on_area_2d_mouse_exited"]

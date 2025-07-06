@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ofliosjyewdv"]
+
+[ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_gj1of"]
+[ext_resource type="Script" uid="uid://jpcjr4uclg5t" path="res://mechanisms/drag_and_drop/battleground_drop.gd" id="2_cb77l"]
+[ext_resource type="Resource" uid="uid://dodp2qehttmo7" path="res://mechanisms/drag_and_drop/current_drag_card_resource.tres" id="3_dxyon"]
+[ext_resource type="Script" uid="uid://d0c82b0ep8ree" path="res://mechanisms/drag_and_drop/encloses_card_component.gd" id="4_dxyon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj1of"]
+size = Vector2(1, 1)
+
+[node name="BattleGround" type="Node2D"]
+scale = Vector2(1000, 980)
+
+[node name="BattleGround" type="Sprite2D" parent="."]
+self_modulate = Color(0.808998, 0.808998, 0.808998, 1)
+texture = ExtResource("1_gj1of")
+offset = Vector2(0, -0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2147483648
+collision_mask = 0
+collision_priority = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gj1of")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="BattlegroundDrop" type="Node2D" parent="Components" node_paths=PackedStringArray("area_2d", "encloses_card_component")]
+script = ExtResource("2_cb77l")
+current_drag_card_resource = ExtResource("3_dxyon")
+area_2d = NodePath("../../Area2D")
+encloses_card_component = NodePath("../EnclosesCardComponent")
+
+[node name="EnclosesCardComponent" type="Node2D" parent="Components"]
+script = ExtResource("4_dxyon")
+current_drag_card_resource = ExtResource("3_dxyon")
+rect_scale = Vector2(1000, 980)
+
+[connection signal="mouse_entered" from="Area2D" to="Components/BattlegroundDrop" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Components/BattlegroundDrop" method="_on_area_2d_mouse_exited"]

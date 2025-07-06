@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CurrentDragCardResource" load_steps=2 format=3 uid="uid://dodp2qehttmo7"]
+
+[ext_resource type="Script" uid="uid://d2q5c6v1lqfkq" path="res://mechanisms/drag_and_drop/current_drag_card_resource.gd" id="1_ycgg1"]
+
+[resource]
+script = ExtResource("1_ycgg1")
+metadata/_custom_type_script = "uid://d2q5c6v1lqfkq"

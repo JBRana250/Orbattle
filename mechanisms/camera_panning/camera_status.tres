@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CameraStatus" load_steps=2 format=3 uid="uid://naqrhr0nmj82"]
+
+[ext_resource type="Script" uid="uid://bqfhxf8khun7n" path="res://mechanisms/camera_panning/camera_status.gd" id="1_n7qga"]
+
+[resource]
+script = ExtResource("1_n7qga")
+metadata/_custom_type_script = "uid://bqfhxf8khun7n"

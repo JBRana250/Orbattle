@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CursorHoverOverControlResource" load_steps=2 format=3 uid="uid://brh6d46rxnywu"]
+
+[ext_resource type="Script" uid="uid://cgne3fv1ahswd" path="res://mechanisms/ui/cursor_hover_over_control.gd" id="1_fx58n"]
+
+[resource]
+script = ExtResource("1_fx58n")
+metadata/_custom_type_script = "uid://cgne3fv1ahswd"
