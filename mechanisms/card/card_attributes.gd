@@ -16,3 +16,7 @@ class_name CardAttributes
 @export_subgroup("Movement Stats")
 @export var walk_speed: float
 @export var walk_accel: float
+
+@export_subgroup("Battle Stats")
+@export var damage: float
+@export var health: float

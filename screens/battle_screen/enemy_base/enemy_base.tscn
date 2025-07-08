@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmwaw47oohdrx"]
+
+[ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_ia1ck"]
+[ext_resource type="Script" uid="uid://dupi3cvldnvq7" path="res://screens/battle_screen/enemy_base/enemy_base.gd" id="1_m4dpa"]
+[ext_resource type="Script" uid="uid://cyfl2gch77ge4" path="res://screens/battle_screen/enemy_base/enemy_base_health_component.gd" id="2_aadqp"]
+[ext_resource type="Script" uid="uid://bbo6xkmsgdkle" path="res://screens/battle_screen/enemy_base/enemy_base_knockback_component.gd" id="4_bcodg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia1ck"]
+size = Vector2(1000, 50)
+
+[node name="EnemyBase" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
+collision_layer = 16
+script = ExtResource("1_m4dpa")
+health_component = NodePath("Components/EnemyBaseHealthComponent")
+
+[node name="EnemyBaseSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.784314, 0.196078, 0.196078, 1)
+position = Vector2(0, -50)
+scale = Vector2(1000, 50)
+texture = ExtResource("1_ia1ck")
+offset = Vector2(0, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_ia1ck")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="EnemyBaseHealthComponent" type="Node" parent="Components"]
+script = ExtResource("2_aadqp")
+starting_health = 100.0
+health = 100.0
+
+[node name="EnemyBaseKBComponent" type="Node" parent="Components"]
+script = ExtResource("4_bcodg")

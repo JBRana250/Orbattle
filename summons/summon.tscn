@@ -1,22 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://clbei0ok3vyjf"]
+[gd_scene load_steps=8 format=3 uid="uid://clbei0ok3vyjf"]
 
 [ext_resource type="Script" uid="uid://dj0uyj7nblri6" path="res://summons/summon.gd" id="1_7mwhh"]
 [ext_resource type="Script" uid="uid://bqflqe8q4cg35" path="res://mechanisms/states/summon/summon_fsm.gd" id="2_vprou"]
+[ext_resource type="Script" uid="uid://05shloudg30l" path="res://mechanisms/summon/components/summon_collide_with_body_component.gd" id="3_dy24h"]
 [ext_resource type="Script" uid="uid://mdi3ylcqcaad" path="res://mechanisms/summon/components/summon_init_component.gd" id="3_hicmr"]
+[ext_resource type="Script" uid="uid://8ii5npmodn4l" path="res://mechanisms/summon/components/summon_self_kb_component.gd" id="4_xf7d8"]
 [ext_resource type="Script" uid="uid://dcjv4pbwo8rbc" path="res://mechanisms/states/summon/states/summon_walking.gd" id="5_dy24h"]
-[ext_resource type="Script" uid="uid://dyf8qqoydq84e" path="res://mechanisms/states/summon/states/summon_idle.gd" id="6_xf7d8"]
-[ext_resource type="Script" uid="uid://cu57a6i1cws2k" path="res://mechanisms/states/summon/states/summon_attacking.gd" id="7_rc8pm"]
-[ext_resource type="Script" uid="uid://dav0kqusd0ww2" path="res://mechanisms/states/summon/states/summon_dying.gd" id="8_6hwum"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dy24h"]
 radius = 63.45
 
-[node name="Summon" type="RigidBody2D" node_paths=PackedStringArray("summon_sprite", "summon_init_component")]
-collision_mask = 6
+[node name="Summon" type="RigidBody2D" node_paths=PackedStringArray("summon_sprite", "summon_init_component", "collide_with_body_component")]
+collision_mask = 22
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_7mwhh")
 summon_sprite = NodePath("SummonSprite")
 summon_init_component = NodePath("Components/SummonInitComponent")
+collide_with_body_component = NodePath("Components/CollideWithBodyComponent")
 
 [node name="SummonSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -33,12 +35,16 @@ states = NodePath("../../States")
 summon_sprite = NodePath("../../SummonSprite")
 col_shape = NodePath("../../CollisionShape2D")
 
-[node name="States" type="Node" parent="." node_paths=PackedStringArray("idle", "walking", "attacking", "dying", "initial_state")]
+[node name="CollideWithBodyComponent" type="Node" parent="Components" node_paths=PackedStringArray("self_kb_component")]
+script = ExtResource("3_dy24h")
+self_kb_component = NodePath("../SelfKnockbackComponent")
+
+[node name="SelfKnockbackComponent" type="Node" parent="Components"]
+script = ExtResource("4_xf7d8")
+
+[node name="States" type="Node" parent="." node_paths=PackedStringArray("walking", "initial_state")]
 script = ExtResource("2_vprou")
-idle = NodePath("summon_idle")
 walking = NodePath("summon_walking")
-attacking = NodePath("summon_attacking")
-dying = NodePath("summon_dying")
 initial_state = NodePath("summon_walking")
 
 [node name="summon_walking" type="Node" parent="States"]
@@ -46,11 +52,4 @@ script = ExtResource("5_dy24h")
 walk_speed = 10.0
 acceleration = 10.0
 
-[node name="summon_idle" type="Node" parent="States"]
-script = ExtResource("6_xf7d8")
-
-[node name="summon_attacking" type="Node" parent="States"]
-script = ExtResource("7_rc8pm")
-
-[node name="summon_dying" type="Node" parent="States"]
-script = ExtResource("8_6hwum")
+[connection signal="body_entered" from="." to="Components/CollideWithBodyComponent" method="_on_summon_body_entered"]

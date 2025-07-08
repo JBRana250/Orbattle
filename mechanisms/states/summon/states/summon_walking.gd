@@ -30,7 +30,7 @@ func _transition(state):
 	state_machine.set_state(state)
 	
 func _physics_process(_delta: float) -> void:
-	if owner.linear_velocity.y > walk_speed:
+	if owner.linear_velocity.y > -walk_speed:
 		owner.linear_velocity.y -= acceleration
 	else:
 		owner.linear_velocity.y = -walk_speed

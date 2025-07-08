@@ -6,6 +6,7 @@ extends Node
 @export var sprite_texture: Texture
 
 @export var summon_init_component: Node
+@export var collide_with_body_component: Node
 
 func startup():
 	summon_init_component.initialize_summon()

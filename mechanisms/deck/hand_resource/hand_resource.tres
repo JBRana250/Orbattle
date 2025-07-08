@@ -1,12 +1,8 @@
-[gd_resource type="Resource" script_class="HandResource" load_steps=3 format=3 uid="uid://r07turfc5ynk"]
+[gd_resource type="Resource" script_class="HandResource" load_steps=2 format=3 uid="uid://r07turfc5ynk"]
 
-[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://mechanisms/deck/card_resource/null_card_resource.tres" id="1_baofi"]
 [ext_resource type="Script" uid="uid://8nfp3spfcokw" path="res://mechanisms/deck/hand_resource/hand_resource.gd" id="1_t58j8"]
 
 [resource]
 script = ExtResource("1_t58j8")
-card_in_slot_a = ExtResource("1_baofi")
-card_in_slot_b = ExtResource("1_baofi")
-card_in_slot_c = ExtResource("1_baofi")
-card_in_slot_d = ExtResource("1_baofi")
+cards_in_hand = {}
 metadata/_custom_type_script = "uid://8nfp3spfcokw"

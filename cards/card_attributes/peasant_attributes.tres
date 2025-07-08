@@ -13,4 +13,6 @@ card_number = 3
 card_formation = Array[Vector2]([Vector2(0, -22.5), Vector2(30, 30), Vector2(-30, 30)])
 walk_speed = 50.0
 walk_accel = 0.5
+damage = 10.0
+health = 20.0
 metadata/_custom_type_script = "uid://yd4oty4bs0jg"

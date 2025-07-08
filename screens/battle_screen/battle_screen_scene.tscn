@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b4ft8uaj17hb7" path="res://screens/battle_screen/battle_screen_root.gd" id="1_64jy8"]
 [ext_resource type="Script" uid="uid://cbysrkerddaep" path="res://mechanisms/camera_panning/camera_pan.gd" id="1_tl5f3"]
-[ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_u3ovn"]
 [ext_resource type="Resource" uid="uid://naqrhr0nmj82" path="res://mechanisms/camera_panning/camera_status.tres" id="2_0j6um"]
 [ext_resource type="PackedScene" uid="uid://cqwkp3wnqtiqt" path="res://cards/card_pedastals/card_pedastal.tscn" id="2_4fp31"]
 [ext_resource type="PackedScene" uid="uid://ofliosjyewdv" path="res://screens/battle_screen/important_scenes/battleground.tscn" id="2_k87bv"]
 [ext_resource type="PackedScene" uid="uid://f1myiq461mwn" path="res://cards/card.tscn" id="3_xgjcn"]
-[ext_resource type="PackedScene" uid="uid://dbf47tfb4fwd2" path="res://screens/battle_screen/important_scenes/player_base.tscn" id="4_6wt21"]
+[ext_resource type="PackedScene" uid="uid://dbf47tfb4fwd2" path="res://screens/battle_screen/player_base/player_base.tscn" id="4_6wt21"]
 [ext_resource type="Script" uid="uid://bseuguc3mfajl" path="res://mechanisms/ui/cursor_over_control.gd" id="5_4af0x"]
 [ext_resource type="Resource" uid="uid://ch1hfjj0q4x66" path="res://cards/card_attributes/null_card_attributes.tres" id="5_d54dk"]
+[ext_resource type="PackedScene" uid="uid://bmwaw47oohdrx" path="res://screens/battle_screen/enemy_base/enemy_base.tscn" id="6_3usd0"]
 [ext_resource type="Resource" uid="uid://brh6d46rxnywu" path="res://mechanisms/ui/cursor_hover_over_control_resource.tres" id="6_buayt"]
 [ext_resource type="Script" uid="uid://jmq8yq8ig6k" path="res://screens/battle_screen/battle_screen_ui.gd" id="7_r1pxh"]
 [ext_resource type="Texture2D" uid="uid://x8hf4jxb5jpd" path="res://textures/deck_altar/deck_altar.png" id="9_r1pxh"]
@@ -107,11 +107,7 @@ update_scale = false
 [node name="EnemyBaseAnchor" type="Node2D" parent="."]
 position = Vector2(960, -101)
 
-[node name="EnemyBase" type="Sprite2D" parent="EnemyBaseAnchor"]
-self_modulate = Color(0.784314, 0.196078, 0.196078, 1)
-scale = Vector2(1000, 50)
-texture = ExtResource("1_u3ovn")
-offset = Vector2(0, -0.5)
+[node name="EnemyBase" parent="EnemyBaseAnchor" instance=ExtResource("6_3usd0")]
 
 [node name="BattleAnchor" type="Node2D" parent="."]
 position = Vector2(960, 880)
