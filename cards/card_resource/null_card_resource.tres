@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://cekx4pw3dmytp"]
+
+[ext_resource type="Resource" uid="uid://ch1hfjj0q4x66" path="res://cards/card_attributes/null_card_attributes.tres" id="1_884n4"]
+[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://cards/card_resource/card_resource.gd" id="1_rm3iq"]
+
+[resource]
+script = ExtResource("1_rm3iq")
+card_name = "NULL"
+card_attributes = ExtResource("1_884n4")
+metadata/_custom_type_script = "uid://dff6lt4yc4q50"

@@ -1,0 +1,26 @@
+{
+  "GP-A1": {
+    "stage_name": "GP-A1",
+    "stage_finite_spawn_array": "",
+    "stage_infinite_spawn_array": [
+      [
+        0,
+        3,
+        0,
+        "peasant"
+      ],
+      [
+        1.5,
+        3,
+        50,
+        "peasant"
+      ],
+      [
+        1.5,
+        3,
+        -50,
+        "peasant"
+      ]
+    ]
+  }
+}

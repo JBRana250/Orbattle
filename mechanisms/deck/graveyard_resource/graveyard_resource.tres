@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GraveyardResource" load_steps=3 format=3 uid="uid://dd810ai8vpyoe"]
 
-[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://mechanisms/deck/card_resource/card_resource.gd" id="1_kunpk"]
+[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://cards/card_resource/card_resource.gd" id="1_kunpk"]
 [ext_resource type="Script" uid="uid://uij1goxwg7si" path="res://mechanisms/deck/graveyard_resource/graveyard_resource.gd" id="2_1gkgy"]
 
 [resource]

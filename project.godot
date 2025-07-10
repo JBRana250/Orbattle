@@ -8,6 +8,19 @@
 
 config_version=5
 
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+resources_spreadsheet_view/fold_docks=true
+resources_spreadsheet_view/resource_cell_label_mode=0
+resources_spreadsheet_view/freeze_first_column=true
+
 [application]
 
 config/name="Orbattle"
@@ -17,9 +30,9 @@ config/icon="res://textures/icon.svg"
 
 [autoload]
 
-MouseMaster="*res://globals/mouse_master.tscn"
-TimeMaster="*res://globals/time_master.tscn"
-SceneTreeDetails="*res://globals/scene_tree_details.gd"
+MouseMaster="*res://singletons/mouse_master.tscn"
+TimeMaster="*res://singletons/time_master.tscn"
+StaticData="*res://singletons/static_data.gd"
 
 [debug]
 
@@ -34,15 +47,17 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/codecapture/plugin.cfg")
+enabled=PackedStringArray("res://addons/codecapture/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://cards/": "pink",
-"res://globals/": "gray",
+"res://data/": "gray",
+"res://enemy/": "red",
 "res://mechanisms/": "gray",
 "res://mechanisms/states/": "gray",
+"res://singletons/": "gray",
 "res://summons/": "orange"
 }
 

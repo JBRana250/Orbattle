@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://sqdeulpq8i24" path="res://mechanisms/card/components/card_init_component.gd" id="13_2eeoa"]
 [ext_resource type="Script" uid="uid://bv0tl8q1q05wf" path="res://mechanisms/states/card/idle.gd" id="13_iootb"]
 [ext_resource type="Script" uid="uid://b24yviythayq6" path="res://mechanisms/states/card/outside_battlefield.gd" id="14_0tfah"]
-[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://mechanisms/deck/card_resource/null_card_resource.tres" id="14_1sf5n"]
+[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://cards/card_resource/null_card_resource.tres" id="14_1sf5n"]
 [ext_resource type="Script" uid="uid://b00l0ti6y03ie" path="res://mechanisms/card/components/card_relocation_component.gd" id="16_acvkr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivai2"]

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DeckResource" load_steps=4 format=3 uid="uid://kdrsmfb6tfud"]
 
-[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://mechanisms/deck/card_resource/card_resource.gd" id="1_34p3h"]
-[ext_resource type="Resource" uid="uid://c6xigi062g1kj" path="res://mechanisms/deck/card_resource/peasant_card_resource.tres" id="2_p3cmf"]
+[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://cards/card_resource/card_resource.gd" id="1_34p3h"]
+[ext_resource type="Resource" uid="uid://bxpud2e1patvf" path="res://cards/card_resource/goblin_peon_card_resource.tres" id="2_fonc6"]
 [ext_resource type="Script" uid="uid://dphiym1eurqnj" path="res://mechanisms/deck/deck_resource/deck_resource.gd" id="2_sdc2y"]
 
 [resource]
 script = ExtResource("2_sdc2y")
-cards_in_deck = Array[ExtResource("1_34p3h")]([ExtResource("2_p3cmf"), ExtResource("2_p3cmf"), ExtResource("2_p3cmf"), ExtResource("2_p3cmf"), ExtResource("2_p3cmf")])
+cards_in_deck = Array[ExtResource("1_34p3h")]([ExtResource("2_fonc6"), ExtResource("2_fonc6"), ExtResource("2_fonc6"), ExtResource("2_fonc6"), ExtResource("2_fonc6")])
 metadata/_custom_type_script = "uid://dphiym1eurqnj"

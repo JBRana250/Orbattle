@@ -41,12 +41,12 @@ func _create_summon(iterator_num: int):
 	var summon_instance = summon_scene.instantiate()
 	var current_marker = current_drag_card_resource.card_battlefield_sprites_and_markers.values()[iterator_num]
 	
-	var local_pos = SceneTreeDetails.current_root.entities.global_position - current_marker.global_position
+	var local_pos = get_tree().current_scene.entities.global_position - current_marker.global_position
 	local_pos = Vector2(-local_pos.x, current_marker.local_offset.y + 50)
 	
 	summon_instance.position = local_pos
 	summon_instance.card_attributes = owner.card_attributes
 	summon_instance.sprite_texture = owner.card_attributes.card_sprite_texture
 	
-	SceneTreeDetails.current_root.entities.add_child(summon_instance)
+	get_tree().current_scene.entities.add_child(summon_instance)
 	summon_instance.startup()

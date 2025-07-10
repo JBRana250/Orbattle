@@ -7,15 +7,11 @@ func _connect_state_signals():
 	owner.connect("left_battlefield", _on_leave_battlefield)
 	owner.connect("stopped_dragging", _on_stop_drag)
 	owner.connect("become_valid", _on_become_valid)
-	
-	TimeMaster.connect("EightCPSTimeout", _EightCPS_process)
 
 func _disconnect_state_signals():
 	owner.disconnect("left_battlefield", _on_leave_battlefield)
 	owner.disconnect("stopped_dragging", _on_stop_drag)
 	owner.disconnect("become_valid", _on_become_valid)
-	
-	TimeMaster.disconnect("EightCPSTimeout", _EightCPS_process)
 
 func enter_state(_prev_state, _new_state):
 	is_current_state = true
@@ -34,7 +30,7 @@ func _transition(state):
 	state_machine.set_state(state)
 
 # This function is called eight times per second
-func _EightCPS_process():
+func _physics_process(_delta):
 	if !owner.is_hovering_over_battlefield:
 		_transition(state_machine.outside_battlefield)
 		return

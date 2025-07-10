@@ -9,4 +9,5 @@ extends Node
 @export var collide_with_body_component: Node
 
 func startup():
+	self.mass = card_attributes.mass
 	summon_init_component.initialize_summon()

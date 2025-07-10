@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://bxpud2e1patvf"]
+
+[ext_resource type="Script" uid="uid://dff6lt4yc4q50" path="res://cards/card_resource/card_resource.gd" id="1_f4qe5"]
+[ext_resource type="Resource" uid="uid://b2prdcjgpud78" path="res://cards/card_attributes/goblin_peon_attributes.tres" id="1_ish04"]
+
+[resource]
+script = ExtResource("1_f4qe5")
+card_name = "GOBLIN_PEON"
+card_attributes = ExtResource("1_ish04")
+metadata/_custom_type_script = "uid://dff6lt4yc4q50"

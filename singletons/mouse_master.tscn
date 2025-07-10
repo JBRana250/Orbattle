@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnalx450xgho7"]
+
+[ext_resource type="Script" uid="uid://c66yy7xutipun" path="res://singletons/mouse_master.gd" id="1_7d7c2"]
+[ext_resource type="Resource" uid="uid://brh6d46rxnywu" path="res://mechanisms/ui/cursor_hover_over_control_resource.tres" id="2_tmfcw"]
+
+[node name="MouseMaster" type="Node2D"]
+script = ExtResource("1_7d7c2")
+cursor_hover_over_control_resource = ExtResource("2_tmfcw")

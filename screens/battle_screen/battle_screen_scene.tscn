@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpdb82bb2pt3p"]
+[gd_scene load_steps=24 format=3 uid="uid://bpdb82bb2pt3p"]
 
 [ext_resource type="Script" uid="uid://b4ft8uaj17hb7" path="res://screens/battle_screen/battle_screen_root.gd" id="1_64jy8"]
 [ext_resource type="Script" uid="uid://cbysrkerddaep" path="res://mechanisms/camera_panning/camera_pan.gd" id="1_tl5f3"]
@@ -11,10 +11,9 @@
 [ext_resource type="Resource" uid="uid://ch1hfjj0q4x66" path="res://cards/card_attributes/null_card_attributes.tres" id="5_d54dk"]
 [ext_resource type="PackedScene" uid="uid://bmwaw47oohdrx" path="res://screens/battle_screen/enemy_base/enemy_base.tscn" id="6_3usd0"]
 [ext_resource type="Resource" uid="uid://brh6d46rxnywu" path="res://mechanisms/ui/cursor_hover_over_control_resource.tres" id="6_buayt"]
-[ext_resource type="Script" uid="uid://jmq8yq8ig6k" path="res://screens/battle_screen/battle_screen_ui.gd" id="7_r1pxh"]
 [ext_resource type="Texture2D" uid="uid://x8hf4jxb5jpd" path="res://textures/deck_altar/deck_altar.png" id="9_r1pxh"]
 [ext_resource type="Resource" uid="uid://kdrsmfb6tfud" path="res://mechanisms/deck/deck_resource/deck_resource.tres" id="11_yswp7"]
-[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://mechanisms/deck/card_resource/null_card_resource.tres" id="12_eyxvs"]
+[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://cards/card_resource/null_card_resource.tres" id="12_eyxvs"]
 [ext_resource type="Texture2D" uid="uid://y0imwbfxofv" path="res://textures/cards/fantasia/kingdom/peasant_card.png" id="15_eyxvs"]
 [ext_resource type="Script" uid="uid://csvyn8sc2fo4c" path="res://mechanisms/deck/cards_manager.gd" id="16_yswp7"]
 [ext_resource type="Texture2D" uid="uid://bxawpcl7t70yf" path="res://textures/graveyard/graveyard.png" id="17_00yqp"]
@@ -118,7 +117,6 @@ update_rotation = false
 update_scale = false
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("7_r1pxh")
 
 [node name="CardsManager" type="Node2D" parent="UI" node_paths=PackedStringArray("pedastal_a", "pedastal_b", "pedastal_c", "pedastal_d", "deck_altar_marker", "ui_canvas_layer", "card_preview")]
 script = ExtResource("16_yswp7")

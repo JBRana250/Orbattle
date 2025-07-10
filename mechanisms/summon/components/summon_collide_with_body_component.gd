@@ -11,5 +11,8 @@ func _on_summon_body_entered(body: Node) -> void:
 	
 	var normal = state.get_contact_local_normal(0)
 	
+	# make the body take damage
 	body.health_component.hit(damage)
+	
+	# knocks itself back with (force, direction of force)
 	self_kb_component.knockback_self(75, normal)

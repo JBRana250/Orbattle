@@ -11,15 +11,6 @@ extends Node
 @export var card_modulate_component: Node
 
 var current_sprite: String = "CARD"
-var root: Node
-
-func _ready():
-	call_deferred("_get_root")
-
-func _get_root():
-	if SceneTreeDetails.current_root == null:
-		call_deferred("_get_root")
-	root = SceneTreeDetails.current_root
 
 func _clear_card_sprites():
 	for sprite in card_sprites.get_children():
@@ -44,7 +35,7 @@ func change_to_battlefield_hover():
 		new_sprite.connect("tree_exiting", globalpos_marker_instance._self_destruct)
 		new_sprite.global_pos_marker = globalpos_marker_instance
 		globalpos_marker_instance.local_offset = pos
-		root.add_child(globalpos_marker_instance)
+		get_tree().current_scene.add_child(globalpos_marker_instance)
 		
 		card_sprites.add_child(new_sprite)
 		
