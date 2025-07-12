@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StageDataResource" load_steps=2 format=3 uid="uid://bv0v52r4r0p7l"]
+
+[ext_resource type="Script" uid="uid://bc2gdkvvxhcue" path="res://enemy/stage_data_resource/stage_data_resource.gd" id="1_gn310"]
+
+[resource]
+script = ExtResource("1_gn310")
+stage_id = "GP-A1"
+metadata/_custom_type_script = "uid://bc2gdkvvxhcue"

@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://sw3nhvsno6tn" path="res://cards/card_pedastals/card_pedastal.gd" id="1_42bhj"]
 [ext_resource type="Texture2D" uid="uid://c3e7ijiga6lhv" path="res://textures/pedastals/summon_pedastal.png" id="1_45bkf"]
-[ext_resource type="Texture2D" uid="uid://biixegj6oo7jy" path="res://textures/cards/card_slot.png" id="2_18uhe"]
+[ext_resource type="Texture2D" uid="uid://biixegj6oo7jy" path="res://textures/pedastals/card_slot.png" id="2_18uhe"]
 [ext_resource type="Resource" uid="uid://dodp2qehttmo7" path="res://mechanisms/drag_and_drop/current_drag_card_resource.tres" id="2_jvys1"]
-[ext_resource type="Resource" uid="uid://ch1hfjj0q4x66" path="res://cards/card_attributes/null_card_attributes.tres" id="3_bdl16"]
+[ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://cards/card_resource/null_card_resource.tres" id="3_bdl16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45bkf"]
 size = Vector2(90, 130)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jvys1"]
-font_size = 512
+font_size = 256
 
 [node name="CardPedastal" type="StaticBody2D" node_paths=PackedStringArray("card_slot_sprite", "pedastal_sprite", "card_slot", "card_cost_label") groups=["card_pedastal", "droppable"]]
 scale = Vector2(2, 2)
@@ -22,7 +22,7 @@ pedastal_sprite = NodePath("PedastalSprite")
 current_drag_card_resource = ExtResource("2_jvys1")
 card_slot = NodePath("CardSlot")
 card_cost_label = NodePath("CardCostLabel")
-null_card_attributes = ExtResource("3_bdl16")
+null_card_resource = ExtResource("3_bdl16")
 
 [node name="PedastalSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.14, 0.14)
@@ -44,9 +44,9 @@ texture = ExtResource("2_18uhe")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
+offset_left = -16.0
 offset_top = -8.0
-offset_right = 288.0
+offset_right = 1244.0
 offset_bottom = 690.0
 grow_horizontal = 2
 grow_vertical = 2

@@ -1,20 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcilwh6lf6trd"]
+[gd_scene load_steps=10 format=3 uid="uid://bcilwh6lf6trd"]
 
 [ext_resource type="Script" uid="uid://buerakrywd4yp" path="res://enemy/enemy.gd" id="1_1wwld"]
-[ext_resource type="Script" uid="uid://mdi3ylcqcaad" path="res://mechanisms/summon/components/summon_init_component.gd" id="1_pmsee"]
+[ext_resource type="Script" uid="uid://mdi3ylcqcaad" path="res://summons/components/summon_init_component.gd" id="1_pmsee"]
 [ext_resource type="Script" uid="uid://bf2m8tf8tvtjf" path="res://enemy/components/enemy_collide_with_body_component.gd" id="3_5ffra"]
-[ext_resource type="Script" uid="uid://8ii5npmodn4l" path="res://mechanisms/summon/components/summon_self_kb_component.gd" id="3_y5vj3"]
+[ext_resource type="Script" uid="uid://8ii5npmodn4l" path="res://summons/components/summon_self_kb_component.gd" id="3_y5vj3"]
 [ext_resource type="Script" uid="uid://bqflqe8q4cg35" path="res://mechanisms/states/summon/summon_fsm.gd" id="4_5ffra"]
 [ext_resource type="Script" uid="uid://c810i1qyba36a" path="res://enemy/states/enemy_walking.gd" id="5_pmsee"]
+[ext_resource type="Script" uid="uid://iyk46vve5lv7" path="res://summons/components/summon_health_component.gd" id="6_5ffra"]
+[ext_resource type="Script" uid="uid://b0v5m80m14eow" path="res://summons/components/summon_modulate_change_component.gd" id="6_e355f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78jik"]
 radius = 63.45
 
-[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("summon_sprite", "enemy_init_component", "collide_with_body_component")]
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("summon_sprite", "enemy_init_component", "collide_with_body_component", "health_component")]
+collision_layer = 2
+collision_mask = 13
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_1wwld")
 summon_sprite = NodePath("SummonSprite")
 enemy_init_component = NodePath("Components/EnemyInitComponent")
 collide_with_body_component = NodePath("Components/CollideWithBodyComponent")
+health_component = NodePath("Components/HealthComponent")
 
 [node name="SummonSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -25,8 +33,12 @@ debug_color = Color(0, 0, 1, 0.588235)
 
 [node name="Components" type="Node" parent="."]
 
-[node name="EnemyInitComponent" type="Node" parent="Components"]
+[node name="EnemyInitComponent" type="Node" parent="Components" node_paths=PackedStringArray("states", "health_component", "summon_sprite", "col_shape")]
 script = ExtResource("1_pmsee")
+states = NodePath("../../States")
+health_component = NodePath("../HealthComponent")
+summon_sprite = NodePath("../../SummonSprite")
+col_shape = NodePath("../../CollisionShape2D")
 
 [node name="CollideWithBodyComponent" type="Node" parent="Components" node_paths=PackedStringArray("self_kb_component")]
 script = ExtResource("3_5ffra")
@@ -34,6 +46,20 @@ self_kb_component = NodePath("../SelfKnockbackComponent")
 
 [node name="SelfKnockbackComponent" type="Node" parent="Components"]
 script = ExtResource("3_y5vj3")
+
+[node name="HealthComponent" type="Node" parent="Components" node_paths=PackedStringArray("modulate_change_component")]
+script = ExtResource("6_5ffra")
+modulate_change_component = NodePath("../ModulateChangeComponent")
+
+[node name="ModulateChangeComponent" type="Node" parent="Components" node_paths=PackedStringArray("onhit_timer")]
+script = ExtResource("6_e355f")
+default_modulate = Color(1, 1, 1, 1)
+onhit_modulate = Color(1, 0, 0, 1)
+onhit_timer = NodePath("onHitTimer")
+
+[node name="onHitTimer" type="Timer" parent="Components/ModulateChangeComponent"]
+wait_time = 0.25
+one_shot = true
 
 [node name="States" type="Node" parent="." node_paths=PackedStringArray("walking", "initial_state")]
 script = ExtResource("4_5ffra")
@@ -44,3 +70,4 @@ initial_state = NodePath("summon_walking")
 script = ExtResource("5_pmsee")
 
 [connection signal="body_entered" from="." to="Components/CollideWithBodyComponent" method="_on_enemy_body_entered"]
+[connection signal="timeout" from="Components/ModulateChangeComponent/onHitTimer" to="Components/ModulateChangeComponent" method="_on_on_hit_timer_timeout"]

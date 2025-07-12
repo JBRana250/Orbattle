@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpdb82bb2pt3p"]
+[gd_scene load_steps=25 format=3 uid="uid://bpdb82bb2pt3p"]
 
 [ext_resource type="Script" uid="uid://b4ft8uaj17hb7" path="res://screens/battle_screen/battle_screen_root.gd" id="1_64jy8"]
 [ext_resource type="Script" uid="uid://cbysrkerddaep" path="res://mechanisms/camera_panning/camera_pan.gd" id="1_tl5f3"]
@@ -28,6 +28,46 @@ bg_color = Color(0.584322, 0.397759, 0.350572, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_buayt"]
 bg_color = Color(0.665785, 0.464685, 0.414264, 1)
+
+[sub_resource type="GDScript" id="GDScript_mnm7k"]
+script/source = "extends Resource
+
+class_name CardAttributes
+
+@export var card_type: String # Either SUMMON, SPELL or BUILDING
+@export var card_cost: int
+
+@export var card_sprite_texture: Texture
+
+# Battle Attributes
+@export_group(\"Battle Attributes\")
+@export var card_size: float  # (0.5, 0.5) is default size. This float will be multiplied with this size vector to obtain the card's size.
+@export var card_number: int # This represents the number of sprites that the card has. Any card type can have any amount, although most have only 1.
+@export var card_formation: Array[Vector2] # This is the formation that the card's sprites are in, representing the local position of the card's sprites. By default, this is [(0,0)] with 1 sprite.
+
+@export_subgroup(\"Movement Stats\")
+@export var walk_speed: float
+@export var walk_accel: float
+@export var mass: float
+
+@export_subgroup(\"Battle Stats\")
+@export var damage: float
+@export var health: float
+"
+
+[sub_resource type="Resource" id="Resource_eyxvs"]
+script = SubResource("GDScript_mnm7k")
+card_type = "NULL"
+card_cost = -1
+card_size = 0.0
+card_number = 0
+card_formation = Array[Vector2]([])
+walk_speed = 0.0
+walk_accel = 0.0
+mass = 0.0
+damage = 0.0
+health = 0.0
+metadata/_custom_type_script = "uid://yd4oty4bs0jg"
 
 [node name="BattleScreen" type="Node" node_paths=PackedStringArray("entities")]
 script = ExtResource("1_64jy8")
@@ -239,6 +279,7 @@ mouse_filter = 1
 
 [node name="PedastalA" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotA" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
+held_card_attributes = SubResource("Resource_eyxvs")
 
 [node name="Space" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
@@ -254,6 +295,7 @@ mouse_filter = 1
 
 [node name="PedastalB" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotB" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
+held_card_attributes = SubResource("Resource_eyxvs")
 
 [node name="Space2" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
@@ -269,6 +311,7 @@ mouse_filter = 1
 
 [node name="PedastalC" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotC" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
+held_card_attributes = SubResource("Resource_eyxvs")
 
 [node name="Space3" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
@@ -284,6 +327,7 @@ mouse_filter = 1
 
 [node name="PedastalD" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotD" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
+held_card_attributes = SubResource("Resource_eyxvs")
 
 [node name="RightPanel" type="Panel" parent="UI/HBoxContainer"]
 layout_mode = 2

@@ -19,13 +19,19 @@ var building_pedastal_texture = preload("res://textures/pedastals/building_pedas
 	set(value):
 		held_card = value
 		if value != null:
-			held_card_attributes = held_card.card_attributes
+			held_card_resource = held_card.card_resource
 
-@export var held_card_attributes: CardAttributes:
+@export var held_card_resource: CardResource:
 	set(value):
-		held_card_attributes = value
-		card_cost_label.text = str(value.card_cost)
-		match held_card_attributes.card_type:
+		held_card_resource = value
+		
+		var card_id: String
+		if value == null:
+			card_id = "null"
+		else:
+			card_id = held_card_resource.card_id
+		
+		match StaticData.card_data[card_id]["card_type"]:
 			"SUMMON":
 				pedastal_sprite.texture = summon_pedastal_texture
 			"SPELL":
@@ -35,10 +41,13 @@ var building_pedastal_texture = preload("res://textures/pedastals/building_pedas
 			"NULL":
 				pedastal_sprite.texture = base_pedastal_texture
 				card_cost_label.text = ""
+				return
 			_:
 				print_debug("invalid card type")
 		
-@export var null_card_attributes: CardAttributes
+		card_cost_label.text = str(StaticData.card_data[value.card_id]["card_cost"])
+		
+@export var null_card_resource: CardResource
 
 func _ready():
 	_hide_card_slot()
@@ -62,7 +71,7 @@ func card_placed_on_pedastal(card: Node2D):
 	
 func card_left_pedastal():
 	held_card = null
-	held_card_attributes = null_card_attributes
+	held_card_resource = null_card_resource
 	
 func send_card_to_pedastal(pedastal):
 	if !held_card:

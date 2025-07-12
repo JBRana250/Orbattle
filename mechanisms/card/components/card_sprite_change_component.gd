@@ -7,7 +7,13 @@ extends Node
 @export var globalpos_marker: PackedScene
 @export var card_sprite_texture: Texture
 
-@export var card_attributes: CardAttributes
+@export var card_resource: CardResource:
+	set(value):
+		card_resource = value
+		card_data = StaticData.card_data[card_resource.card_id]
+
+var card_data
+
 @export var card_modulate_component: Node
 
 var current_sprite: String = "CARD"
@@ -24,11 +30,13 @@ func change_to_battlefield_hover():
 	_clear_card_sprites()
 	current_drag_card_resource.card_battlefield_sprites_and_markers.clear()
 	
-	for i in range(card_attributes.card_number):
+	for i in range(card_data.card_number):
 		var new_sprite = card_sprite_scene.instantiate()
-		var pos = card_attributes.card_formation[i]
+		var card_formation = str_to_var(card_data["card_formation"])
+		var pos = card_formation[i]
+
 		new_sprite.texture = card_sprite_texture
-		new_sprite.scale = Vector2(0.5, 0.5) * card_attributes.card_size
+		new_sprite.scale = Vector2(0.5, 0.5) * card_data.card_size
 		new_sprite.position = pos
 		
 		var globalpos_marker_instance = globalpos_marker.instantiate()

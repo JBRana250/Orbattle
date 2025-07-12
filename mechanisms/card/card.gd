@@ -41,8 +41,11 @@ extends Node
 			valid_placement = value
 
 @export_group("Card Specifics")
-@export var card_resource: CardResource
-@export var card_attributes: CardAttributes
+@export var card_resource: CardResource:
+	set(value):
+		card_resource = value
+		card_data = StaticData.card_data[value.card_id]
+var card_data: Dictionary
 
 @export_group("")
 @export var current_drag_card_resource: CurrentDragCardResource

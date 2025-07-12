@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbf47tfb4fwd2"]
+[gd_scene load_steps=8 format=3 uid="uid://dbf47tfb4fwd2"]
 
+[ext_resource type="Script" uid="uid://csho2gbikspet" path="res://screens/battle_screen/player_base/player_base.gd" id="1_oxbgu"]
 [ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_rn8g7"]
 [ext_resource type="Script" uid="uid://bfm3lqtxl81l2" path="res://mechanisms/card/components/card_path_component.gd" id="2_k1ouq"]
 [ext_resource type="PackedScene" uid="uid://dsf00t7qbuf5h" path="res://cards/card_path/card_path.tscn" id="3_ds8rb"]
 [ext_resource type="Resource" uid="uid://dodp2qehttmo7" path="res://mechanisms/drag_and_drop/current_drag_card_resource.tres" id="4_ds8rb"]
+[ext_resource type="Script" uid="uid://cqqct6ot3x281" path="res://screens/battle_screen/player_base/components/player_base_health_component.gd" id="4_nvwm4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8rb"]
 size = Vector2(1000, 50)
 
-[node name="PlayerBase" type="StaticBody2D"]
+[node name="PlayerBase" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
 self_modulate = Color(0.392157, 0.588235, 0.784314, 1)
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("1_oxbgu")
+health_component = NodePath("Components/PlayerBaseHealthComponent")
 
 [node name="Components" type="Node" parent="."]
 
@@ -20,6 +24,11 @@ script = ExtResource("2_k1ouq")
 card_path_scene = ExtResource("3_ds8rb")
 current_drag_card_resource = ExtResource("4_ds8rb")
 card_paths = NodePath("../../CardPaths")
+
+[node name="PlayerBaseHealthComponent" type="Node" parent="Components"]
+script = ExtResource("4_nvwm4")
+starting_health = 100.0
+health = 100.0
 
 [node name="CardPaths" type="Node2D" parent="."]
 

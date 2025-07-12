@@ -11,8 +11,8 @@ extends Node2D
 @export var null_card_resource: CardResource
 
 func use_card():
-	var card_attributes = owner.card_attributes
-	match card_attributes.card_type:
+	var card_data = owner.card_data
+	match card_data.card_type:
 		"SUMMON":
 			_create_all_summons()
 		"SPELL":
@@ -30,13 +30,14 @@ func use_card():
 	owner.queue_free()
 
 func _create_all_summons():
-	var card_attributes = owner.card_attributes
-	var card_num = card_attributes.card_number
+	var card_data = owner.card_data
+	var card_num = card_data.card_number
+	var texture = StaticData.card_id_to_image(owner.card_resource.card_id)
 	
 	for num in range(card_num):
-		_create_summon(num)
+		_create_summon(num, texture)
 
-func _create_summon(iterator_num: int):
+func _create_summon(iterator_num: int, texture: Texture):
 	
 	var summon_instance = summon_scene.instantiate()
 	var current_marker = current_drag_card_resource.card_battlefield_sprites_and_markers.values()[iterator_num]
@@ -45,8 +46,8 @@ func _create_summon(iterator_num: int):
 	local_pos = Vector2(-local_pos.x, current_marker.local_offset.y + 50)
 	
 	summon_instance.position = local_pos
-	summon_instance.card_attributes = owner.card_attributes
-	summon_instance.sprite_texture = owner.card_attributes.card_sprite_texture
+	summon_instance.card_resource = owner.card_resource
+	summon_instance.sprite_texture = texture
 	
 	get_tree().current_scene.entities.add_child(summon_instance)
 	summon_instance.startup()

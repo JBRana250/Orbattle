@@ -1,0 +1,41 @@
+{
+  "null": {
+	"card_name": "Null",
+	"card_type": "NULL",
+	"card_cost": "",
+	"card_size": "",
+	"card_number": "",
+	"card_formation": "",
+	"walk_speed": "",
+	"walk_accel": "",
+	"damage": "",
+	"health": "",
+	"mass": ""
+  },
+  "peasant": {
+	"card_name": "Peasant",
+	"card_type": "SUMMON",
+	"card_cost": 1,
+	"card_size": 0.5,
+	"card_number": 3,
+	"card_formation": "[Vector2(0, -22.5), Vector2(30, 30), Vector2(-30, 30)]",
+	"walk_speed": 35,
+	"walk_accel": 0.5,
+	"damage": 10,
+	"health": 20,
+	"mass": 1
+  },
+  "goblin_peon": {
+	"card_name": "Goblin Peon",
+	"card_type": "SUMMON",
+	"card_cost": 1,
+	"card_size": 0.5,
+	"card_number": 3,
+	"card_formation": "[Vector2(0, -22.5), Vector2(30, 30), Vector2(-30, 30)]",
+	"walk_speed": 50,
+	"walk_accel": 0.5,
+	"damage": 15,
+	"health": 25,
+	"mass": 0.8
+  }
+}

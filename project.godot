@@ -30,9 +30,9 @@ config/icon="res://textures/icon.svg"
 
 [autoload]
 
-MouseMaster="*res://singletons/mouse_master.tscn"
-TimeMaster="*res://singletons/time_master.tscn"
-StaticData="*res://singletons/static_data.gd"
+MouseMaster="*res://singletons/mouse_master/mouse_master.tscn"
+TimeMaster="*res://singletons/time_master/time_master.tscn"
+StaticData="*res://singletons/static_data/static_data.tscn"
 
 [debug]
 
@@ -57,6 +57,8 @@ folder_colors={
 "res://enemy/": "red",
 "res://mechanisms/": "gray",
 "res://mechanisms/states/": "gray",
+"res://screens/battle_screen/enemy_base/components/": "gray",
+"res://screens/battle_screen/player_base/components/": "gray",
 "res://singletons/": "gray",
 "res://summons/": "orange"
 }

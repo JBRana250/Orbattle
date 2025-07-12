@@ -13,8 +13,8 @@ func _ready():
 	pass
 
 func init_walking():
-	walking.walk_speed = owner.card_attributes.walk_speed
-	walking.acceleration = owner.card_attributes.walk_accel
+	walking.walk_speed = owner.card_data.walk_speed
+	walking.acceleration = owner.card_data.walk_accel
 
 func init_states():
 	init_walking()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj8g7ncqb72ks"]
+
+[ext_resource type="Script" uid="uid://dsmnkwf5yiii4" path="res://singletons/static_data/static_data.gd" id="1_c6qmw"]
+[ext_resource type="Script" uid="uid://c4mr0pjni6263" path="res://singletons/static_data/card_id_to_image.gd" id="2_getio"]
+
+[node name="StaticData" type="Node" node_paths=PackedStringArray("card_id_to_image_node")]
+script = ExtResource("1_c6qmw")
+card_id_to_image_node = NodePath("CardIDToImage")
+
+[node name="CardIDToImage" type="Node" parent="."]
+script = ExtResource("2_getio")

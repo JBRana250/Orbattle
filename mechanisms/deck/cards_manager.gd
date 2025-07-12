@@ -42,7 +42,6 @@ func _append_card_to_slot(pedastal: StaticBody2D):
 	
 	card_preview.visible = false
 	var card_instance = card_scene.instantiate()
-	card_instance.card_attributes = top_card.card_attributes
 	card_instance.card_resource = top_card
 	card_instance.start_init()
 	card_instance.global_position = deck_altar_marker.global_position
@@ -56,7 +55,7 @@ func _append_card_to_slot(pedastal: StaticBody2D):
 	pedastal.card_placed_on_pedastal(card_instance)
 
 func _preview_next_card(card: CardResource):
-	card_preview.texture = card.card_attributes.card_sprite_texture
+	card_preview.texture = StaticData.card_id_to_image(card.card_id)
 	card_preview.visible = true
 
 func _init_hand():
