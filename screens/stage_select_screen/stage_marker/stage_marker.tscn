@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj1l2ts28jakc"]
+
+[ext_resource type="Texture2D" uid="uid://coasfd211pbqs" path="res://textures/stage_marker/stage_marker.png" id="1_7vjxw"]
+[ext_resource type="Script" uid="uid://crub7sgyh5nud" path="res://screens/stage_select_screen/stage_marker/stage_marker.gd" id="1_jtnmf"]
+[ext_resource type="Script" uid="uid://b5uclnuit22x0" path="res://screens/stage_select_screen/stage_marker/components/stage_hover_component.gd" id="2_yaikh"]
+[ext_resource type="Script" uid="uid://bo1r2wxdoalqy" path="res://screens/stage_select_screen/stage_marker/components/stage_select_component.gd" id="3_feh7q"]
+[ext_resource type="Script" uid="uid://byya45r6y4i1" path="res://mechanisms/states/stage_marker/stage_marker_fsm.gd" id="4_feh7q"]
+[ext_resource type="Script" uid="uid://cbf5lhsnbontw" path="res://mechanisms/states/stage_marker/sm_idle.gd" id="5_k2f7d"]
+[ext_resource type="Script" uid="uid://be6i0uvxww458" path="res://screens/stage_select_screen/stage_marker/components/stage_modulate_component.gd" id="5_w71t7"]
+[ext_resource type="Script" uid="uid://5uhtxmpgun5t" path="res://mechanisms/states/stage_marker/sm_hover.gd" id="6_jtnmf"]
+[ext_resource type="Script" uid="uid://ddhv86wubj11r" path="res://mechanisms/states/stage_marker/sm_selected.gd" id="7_w71t7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vjxw"]
+radius = 9.0
+
+[node name="StageMarker" type="Node2D"]
+modulate = Color(1, 1, 1, 0.588235)
+script = ExtResource("1_jtnmf")
+
+[node name="StageMarkerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_7vjxw")
+
+[node name="StageMarkerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageMarkerArea"]
+shape = SubResource("CircleShape2D_7vjxw")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="StageHoverComponent" type="Node" parent="Components"]
+script = ExtResource("2_yaikh")
+
+[node name="StageSelectComponent" type="Node" parent="Components"]
+script = ExtResource("3_feh7q")
+
+[node name="StageModulateComponent" type="Node" parent="Components"]
+script = ExtResource("5_w71t7")
+default_modulate = Color(1, 1, 1, 0.588235)
+hover_modulate = Color(0.392157, 1, 0.588235, 1)
+selected_modulate = Color(0, 0, 1, 1)
+
+[node name="States" type="Node" parent="." node_paths=PackedStringArray("idle", "hover", "selected", "initial_state")]
+script = ExtResource("4_feh7q")
+idle = NodePath("Idle")
+hover = NodePath("Hover")
+selected = NodePath("Selected")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component")]
+script = ExtResource("5_k2f7d")
+stage_modulate_component = NodePath("../../Components/StageModulateComponent")
+
+[node name="Hover" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component")]
+script = ExtResource("6_jtnmf")
+stage_modulate_component = NodePath("../../Components/StageModulateComponent")
+
+[node name="Selected" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component")]
+script = ExtResource("7_w71t7")
+stage_modulate_component = NodePath("../../Components/StageModulateComponent")
+
+[connection signal="input_event" from="StageMarkerArea" to="Components/StageSelectComponent" method="_on_stage_marker_area_input_event"]
+[connection signal="mouse_entered" from="StageMarkerArea" to="Components/StageHoverComponent" method="_on_stage_marker_area_mouse_entered"]
+[connection signal="mouse_exited" from="StageMarkerArea" to="Components/StageHoverComponent" method="_on_stage_marker_area_mouse_exited"]

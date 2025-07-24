@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerBattleResources" load_steps=2 format=3 uid="uid://d1ojrblkug2ro"]
+
+[ext_resource type="Script" uid="uid://bfxl2l08r1o8l" path="res://mechanisms/essence_count/player_battle_resources.gd" id="1_mjjg4"]
+
+[resource]
+script = ExtResource("1_mjjg4")
+essence = 0.0
+metadata/_custom_type_script = "uid://bfxl2l08r1o8l"

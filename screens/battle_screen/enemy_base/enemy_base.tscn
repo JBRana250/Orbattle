@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmwaw47oohdrx"]
+[gd_scene load_steps=10 format=3 uid="uid://bmwaw47oohdrx"]
 
 [ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_ia1ck"]
 [ext_resource type="Script" uid="uid://dupi3cvldnvq7" path="res://screens/battle_screen/enemy_base/enemy_base.gd" id="1_m4dpa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cp22e65jgwenk" path="res://screens/battle_screen/enemy_base/components/enemy_spawn_component.gd" id="5_eh8qe"]
 [ext_resource type="Resource" uid="uid://bv0v52r4r0p7l" path="res://enemy/stage_data_resource/GP-A1.tres" id="6_f5ndk"]
 [ext_resource type="PackedScene" uid="uid://cmpbjmaeoijyd" path="res://enemy/enemy_infinite_spawner/enemy_infinite_spawner.tscn" id="6_f6qw3"]
+[ext_resource type="Script" uid="uid://50tgkr82a1ux" path="res://screens/battle_screen/enemy_base/components/enemy_base_modulate_component.gd" id="8_003cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ia1ck"]
 size = Vector2(1000, 50)
@@ -29,8 +30,9 @@ shape = SubResource("RectangleShape2D_ia1ck")
 
 [node name="Components" type="Node" parent="."]
 
-[node name="EnemyBaseHealthComponent" type="Node" parent="Components"]
+[node name="EnemyBaseHealthComponent" type="Node" parent="Components" node_paths=PackedStringArray("enemy_base_modulate_component")]
 script = ExtResource("2_aadqp")
+enemy_base_modulate_component = NodePath("../EnemyBaseModulateComponent")
 starting_health = 100.0
 health = 100.0
 
@@ -43,4 +45,17 @@ spawners_node = NodePath("../../Spawners")
 stage_data_resource = ExtResource("6_f5ndk")
 enemy_infinite_spawner = ExtResource("6_f6qw3")
 
+[node name="EnemyBaseModulateComponent" type="Node" parent="Components" node_paths=PackedStringArray("base_sprite", "onhit_timer")]
+script = ExtResource("8_003cw")
+base_sprite = NodePath("../../EnemyBaseSprite")
+onhit_modulate = Color(1, 1, 1, 1)
+default_modulate = Color(1, 0, 0, 1)
+onhit_timer = NodePath("onHitTimer")
+
+[node name="onHitTimer" type="Timer" parent="Components/EnemyBaseModulateComponent"]
+wait_time = 0.05
+one_shot = true
+
 [node name="Spawners" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Components/EnemyBaseModulateComponent/onHitTimer" to="Components/EnemyBaseModulateComponent" method="_on_on_hit_timer_timeout"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmehjem7t84tq"]
+
+[ext_resource type="Script" uid="uid://c0dm414llwttj" path="res://mechanisms/essence_count/essence_count.gd" id="1_785ai"]
+[ext_resource type="Texture2D" uid="uid://7s7t7adrkkco" path="res://Images/card_slot.png" id="1_hfjpf"]
+[ext_resource type="Resource" uid="uid://d1ojrblkug2ro" path="res://mechanisms/essence_count/player_battle_resources.tres" id="2_86roc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_785ai"]
+font_size = 32
+
+[node name="EssenceCounter" type="Node2D" node_paths=PackedStringArray("essence_label")]
+script = ExtResource("1_785ai")
+player_battle_resources = ExtResource("2_86roc")
+essence_rate = 0.5
+essence_label = NodePath("essence_label")
+
+[node name="essence_counter_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hfjpf")
+
+[node name="essence_label" type="Label" parent="."]
+offset_left = -80.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "1.0"
+label_settings = SubResource("LabelSettings_785ai")
+horizontal_alignment = 1
+vertical_alignment = 1

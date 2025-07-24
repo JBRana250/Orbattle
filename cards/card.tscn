@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://f1myiq461mwn"]
+[gd_scene load_steps=24 format=3 uid="uid://f1myiq461mwn"]
 
 [ext_resource type="Script" uid="uid://bvjk0j8ankghq" path="res://mechanisms/card/card.gd" id="1_f61jr"]
 [ext_resource type="Script" uid="uid://cc6ipm0omqeuc" path="res://mechanisms/drag_and_drop/card_drag.gd" id="1_nwofj"]
@@ -11,14 +11,15 @@
 [ext_resource type="Resource" uid="uid://dd810ai8vpyoe" path="res://mechanisms/deck/graveyard_resource/graveyard_resource.tres" id="10_0tfah"]
 [ext_resource type="Script" uid="uid://dfx7uh6fu47fg" path="res://mechanisms/states/card/card_fsm.gd" id="10_iruc6"]
 [ext_resource type="Resource" uid="uid://kdrsmfb6tfud" path="res://mechanisms/deck/deck_resource/deck_resource.tres" id="11_2eeoa"]
-[ext_resource type="Script" uid="uid://bm1sixiomyy8r" path="res://mechanisms/states/card/battlefield_valid.gd" id="11_8uw76"]
+[ext_resource type="Script" uid="uid://bm1sixiomyy8r" path="res://mechanisms/states/card/card_battlefield_valid.gd" id="11_8uw76"]
 [ext_resource type="Resource" uid="uid://r07turfc5ynk" path="res://mechanisms/deck/hand_resource/hand_resource.tres" id="11_hwwr4"]
 [ext_resource type="Script" uid="uid://bk61b7o8sgrgf" path="res://mechanisms/card/components/use_card_component.gd" id="11_iootb"]
 [ext_resource type="PackedScene" uid="uid://clbei0ok3vyjf" path="res://summons/summon.tscn" id="12_0tfah"]
-[ext_resource type="Script" uid="uid://25atu1sp2o54" path="res://mechanisms/states/card/battlefield_invalid.gd" id="12_1de77"]
+[ext_resource type="Script" uid="uid://25atu1sp2o54" path="res://mechanisms/states/card/card_battlefield_invalid.gd" id="12_1de77"]
+[ext_resource type="Resource" uid="uid://d1ojrblkug2ro" path="res://mechanisms/essence_count/player_battle_resources.tres" id="12_rhob6"]
 [ext_resource type="Script" uid="uid://sqdeulpq8i24" path="res://mechanisms/card/components/card_init_component.gd" id="13_2eeoa"]
-[ext_resource type="Script" uid="uid://bv0tl8q1q05wf" path="res://mechanisms/states/card/idle.gd" id="13_iootb"]
-[ext_resource type="Script" uid="uid://b24yviythayq6" path="res://mechanisms/states/card/outside_battlefield.gd" id="14_0tfah"]
+[ext_resource type="Script" uid="uid://bv0tl8q1q05wf" path="res://mechanisms/states/card/card_idle.gd" id="13_iootb"]
+[ext_resource type="Script" uid="uid://b24yviythayq6" path="res://mechanisms/states/card/card_outside_battlefield.gd" id="14_0tfah"]
 [ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://cards/card_resource/null_card_resource.tres" id="14_1sf5n"]
 [ext_resource type="Script" uid="uid://b00l0ti6y03ie" path="res://mechanisms/card/components/card_relocation_component.gd" id="16_acvkr"]
 
@@ -81,6 +82,7 @@ card_battlefield_invalid_modulate = Color(1, 0, 0, 0.588235)
 [node name="UseCardComponent" type="Node2D" parent="Components"]
 script = ExtResource("11_iootb")
 current_drag_card_resource = ExtResource("4_1de77")
+player_battle_resources = ExtResource("12_rhob6")
 graveyard_resource = ExtResource("10_0tfah")
 hand_resource = ExtResource("11_hwwr4")
 deck_resource = ExtResource("11_2eeoa")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy7yvjve0w4ut"]
+
+[ext_resource type="Texture2D" uid="uid://gd7vyesvngh" path="res://textures/stage_marker/elite_stage_marker.png" id="1_543vb"]
+[ext_resource type="Script" uid="uid://crub7sgyh5nud" path="res://screens/stage_select_screen/stage_marker/stage_marker.gd" id="1_luu4x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_543vb"]
+radius = 19.0
+
+[node name="EliteStageMarker" type="Node2D"]
+modulate = Color(1, 1, 1, 0.588235)
+script = ExtResource("1_luu4x")
+
+[node name="StageMarkerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_543vb")
+
+[node name="StageMarkerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageMarkerArea"]
+shape = SubResource("CircleShape2D_543vb")

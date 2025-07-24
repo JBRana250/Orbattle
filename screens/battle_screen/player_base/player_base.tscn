@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbf47tfb4fwd2"]
+[gd_scene load_steps=9 format=3 uid="uid://dbf47tfb4fwd2"]
 
 [ext_resource type="Script" uid="uid://csho2gbikspet" path="res://screens/battle_screen/player_base/player_base.gd" id="1_oxbgu"]
 [ext_resource type="Texture2D" uid="uid://cbji67ys8tu66" path="res://textures/placeholder_textures/white_square_texture.png" id="1_rn8g7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsf00t7qbuf5h" path="res://cards/card_path/card_path.tscn" id="3_ds8rb"]
 [ext_resource type="Resource" uid="uid://dodp2qehttmo7" path="res://mechanisms/drag_and_drop/current_drag_card_resource.tres" id="4_ds8rb"]
 [ext_resource type="Script" uid="uid://cqqct6ot3x281" path="res://screens/battle_screen/player_base/components/player_base_health_component.gd" id="4_nvwm4"]
+[ext_resource type="Script" uid="uid://b1yscttxc5xy1" path="res://screens/battle_screen/player_base/components/player_base_modulate_component.gd" id="6_lhkr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8rb"]
 size = Vector2(1000, 50)
@@ -25,10 +26,22 @@ card_path_scene = ExtResource("3_ds8rb")
 current_drag_card_resource = ExtResource("4_ds8rb")
 card_paths = NodePath("../../CardPaths")
 
-[node name="PlayerBaseHealthComponent" type="Node" parent="Components"]
+[node name="PlayerBaseHealthComponent" type="Node" parent="Components" node_paths=PackedStringArray("player_base_modulate_component")]
 script = ExtResource("4_nvwm4")
+player_base_modulate_component = NodePath("../PlayerBaseModulateComponent")
 starting_health = 100.0
 health = 100.0
+
+[node name="PlayerBaseModulateComponent" type="Node" parent="Components" node_paths=PackedStringArray("base_sprite", "onhit_timer")]
+script = ExtResource("6_lhkr0")
+base_sprite = NodePath("../../PlayerBaseSprite")
+onhit_modulate = Color(1, 1, 1, 1)
+default_modulate = Color(0, 0.588235, 0.980392, 1)
+onhit_timer = NodePath("onHitTimer")
+
+[node name="onHitTimer" type="Timer" parent="Components/PlayerBaseModulateComponent"]
+wait_time = 0.05
+one_shot = true
 
 [node name="CardPaths" type="Node2D" parent="."]
 
@@ -41,3 +54,5 @@ offset = Vector2(0, 0.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_ds8rb")
+
+[connection signal="timeout" from="Components/PlayerBaseModulateComponent/onHitTimer" to="Components/PlayerBaseModulateComponent" method="_on_on_hit_timer_timeout"]

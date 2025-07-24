@@ -2,6 +2,8 @@ extends Node2D
 
 @export var current_drag_card_resource: CurrentDragCardResource
 
+@export var player_battle_resources: PlayerBattleResources
+
 @export var graveyard_resource: GraveyardResource
 @export var hand_resource: HandResource
 @export var deck_resource: DeckResource
@@ -11,6 +13,16 @@ extends Node2D
 @export var null_card_resource: CardResource
 
 func use_card():
+	
+	var current_essence = player_battle_resources.essence
+	var card_cost = owner.card_data.card_cost
+	
+	if current_essence < card_cost:
+		return
+	
+	player_battle_resources.essence -= card_cost
+	player_battle_resources.essence_important_change.emit()
+	
 	var card_data = owner.card_data
 	match card_data.card_type:
 		"SUMMON":

@@ -29,8 +29,15 @@ func exit_state(_prev_state, _new_state):
 func _transition(state):
 	state_machine.set_state(state)
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if owner.linear_velocity.y < walk_speed:
-		owner.linear_velocity.y += acceleration
+		owner.linear_velocity.y += acceleration * delta
 	else:
 		owner.linear_velocity.y = walk_speed
+	
+	if owner.linear_velocity.x < 0.1:
+		owner.linear_velocity.x += acceleration * delta
+	if owner.linear_velocity.x > 0.1:
+		owner.linear_velocity.x -= acceleration * delta
+	else:
+		owner.linear_velocity.x = 0
