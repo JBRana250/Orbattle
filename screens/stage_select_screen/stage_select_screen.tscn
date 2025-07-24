@@ -1,60 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsty1s3snldgl"]
+[gd_scene load_steps=5 format=3 uid="uid://bsty1s3snldgl"]
 
 [ext_resource type="Texture2D" uid="uid://bheonpex0nwsb" path="res://textures/maps/orbattle_fantasia_map.png" id="1_abo27"]
 [ext_resource type="PackedScene" uid="uid://dj1l2ts28jakc" path="res://screens/stage_select_screen/stage_marker/stage_marker.tscn" id="2_xhtox"]
 [ext_resource type="PackedScene" uid="uid://dy7yvjve0w4ut" path="res://screens/stage_select_screen/stage_marker/elite_stage_marker.tscn" id="3_0u3kn"]
+[ext_resource type="PackedScene" uid="uid://cxf2ehnm8uua6" path="res://screens/stage_select_screen/UI/screen_select_UI.tscn" id="4_5ycrp"]
 
 [node name="StageSelectScreen" type="Node"]
 
 [node name="MapSprite" type="Sprite2D" parent="."]
-position = Vector2(1000, 670)
+position = Vector2(970, 500)
+scale = Vector2(0.996692, 1.00682)
 texture = ExtResource("1_abo27")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1000, 670)
-zoom = Vector2(0.96, 0.96)
+position = Vector2(960, 540)
 
 [node name="GreatPlainsMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1473, 454)
+position = Vector2(1436, 281)
 
 [node name="ArkOfMankindMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(1208, 490)
+position = Vector2(1180, 318)
 
 [node name="RemoteVilliageMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1366, 385)
+position = Vector2(1329, 209)
 
 [node name="StartingTownMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1315, 542)
+position = Vector2(1280, 362)
 
 [node name="MysticMountainsMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1091, 503)
+position = Vector2(1048, 305)
 
 [node name="FairyForestMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1194, 399)
+position = Vector2(1163, 221)
 
 [node name="BanditBayMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(980, 445)
+position = Vector2(952, 267)
 
 [node name="WhimsicalWoodsMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(1030, 642)
+position = Vector2(960, 540)
 
 [node name="BloodIronCountyMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(1153, 698)
+position = Vector2(1116, 537)
 
 [node name="DwarvenStrongholdMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(1101, 894)
+position = Vector2(1070, 721)
 
 [node name="FrontierTownMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(749, 561)
+position = Vector2(724, 393)
 
 [node name="DisastrousDesertMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(827, 870)
+position = Vector2(800, 706)
 
 [node name="SnowyFieldsMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(469, 617)
+position = Vector2(442, 455)
 
 [node name="DemonTownMarker" parent="." instance=ExtResource("2_xhtox")]
-position = Vector2(584, 832)
+position = Vector2(555, 672)
 
 [node name="DemonKingsCastleMarker" parent="." instance=ExtResource("3_0u3kn")]
-position = Vector2(406, 990)
+position = Vector2(379, 829)
+
+[node name="ScreenSelectUi" parent="." instance=ExtResource("4_5ycrp")]
