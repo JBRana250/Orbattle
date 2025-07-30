@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxf2ehnm8uua6"]
+
+[ext_resource type="PackedScene" uid="uid://chlmpx5i33q0g" path="res://screens/stage_select_screen/UI/stage_panel.tscn" id="1_88avo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf6wr"]
+font_size = 32
+
+[node name="StageSelectUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelArea" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelArea"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelArea/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="RegionPanel" type="Panel" parent="MarginContainer/PanelArea/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelArea/Panel/VBoxContainer/RegionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "{RegionName}"
+label_settings = SubResource("LabelSettings_xf6wr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StagePanel" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2
+
+[node name="StagePanel2" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2
+
+[node name="StagePanel3" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2

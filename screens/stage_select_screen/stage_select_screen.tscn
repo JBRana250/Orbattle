@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bheonpex0nwsb" path="res://textures/maps/orbattle_fantasia_map.png" id="1_abo27"]
 [ext_resource type="PackedScene" uid="uid://dj1l2ts28jakc" path="res://screens/stage_select_screen/stage_marker/stage_marker.tscn" id="2_xhtox"]
 [ext_resource type="PackedScene" uid="uid://dy7yvjve0w4ut" path="res://screens/stage_select_screen/stage_marker/elite_stage_marker.tscn" id="3_0u3kn"]
-[ext_resource type="PackedScene" uid="uid://cxf2ehnm8uua6" path="res://screens/stage_select_screen/UI/screen_select_UI.tscn" id="4_5ycrp"]
+[ext_resource type="PackedScene" uid="uid://cxf2ehnm8uua6" path="res://screens/stage_select_screen/UI/stage_select_ui.tscn" id="4_5ycrp"]
 
 [node name="StageSelectScreen" type="Node"]
 
