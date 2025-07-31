@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxf2ehnm8uua6"]
+[gd_scene load_steps=8 format=3 uid="uid://cxf2ehnm8uua6"]
 
 [ext_resource type="PackedScene" uid="uid://chlmpx5i33q0g" path="res://screens/stage_select_screen/UI/stage_panel.tscn" id="1_88avo"]
+[ext_resource type="Script" uid="uid://ddj554d3uyaou" path="res://screens/stage_select_screen/UI/stage_select_ui.gd" id="1_yb32q"]
+[ext_resource type="Texture2D" uid="uid://0elor4gnrd2g" path="res://textures/buttons/x_button_default.png" id="2_pdl5f"]
+[ext_resource type="Texture2D" uid="uid://dna3sfskkm28r" path="res://textures/buttons/x_button_pressed.png" id="3_yb32q"]
+[ext_resource type="Texture2D" uid="uid://smtgi7dvcc6b" path="res://textures/buttons/x_button_hover.png" id="4_ygq45"]
+[ext_resource type="Script" uid="uid://yx86ogclf7y6" path="res://screens/stage_select_screen/UI/stage_select_exit_panel_button.gd" id="6_ygq45"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xf6wr"]
 font_size = 32
@@ -12,7 +17,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 2
+script = ExtResource("1_yb32q")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,51 +35,99 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelArea" type="Control" parent="MarginContainer"]
-custom_minimum_size = Vector2(400, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/PanelArea"]
+[node name="MainPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-size_flags_horizontal = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelArea/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 5
-
-[node name="RegionPanel" type="Panel" parent="MarginContainer/PanelArea/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="MarginContainer/PanelArea/Panel/VBoxContainer/RegionPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer"]
+custom_minimum_size = Vector2(0, 1050)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RegionPanel" type="Panel" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer/RegionPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 text = "{RegionName}"
 label_settings = SubResource("LabelSettings_xf6wr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StagePanel" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+[node name="StagePanel" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+mouse_filter = 1
 
-[node name="StagePanel2" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+[node name="StagePanel2" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
 layout_mode = 2
+mouse_filter = 1
 
-[node name="StagePanel3" parent="MarginContainer/PanelArea/Panel/VBoxContainer" instance=ExtResource("1_88avo")]
+[node name="StagePanel3" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
 layout_mode = 2
+mouse_filter = 1
+
+[node name="StagePanel4" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="StagePanel5" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="StagePanel6" parent="MarginContainer/HBoxContainer/MainPanel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_88avo")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ExitPanelButtonPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ExitPanelButtonPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ExitPanelButton" type="TextureButton" parent="MarginContainer/HBoxContainer/ExitPanelButtonPanel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("2_pdl5f")
+texture_pressed = ExtResource("3_yb32q")
+texture_hover = ExtResource("4_ygq45")
+script = ExtResource("6_ygq45")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ExitPanelButtonPanel/MarginContainer/ExitPanelButton" to="MarginContainer/HBoxContainer/ExitPanelButtonPanel/MarginContainer/ExitPanelButton" method="_on_pressed"]

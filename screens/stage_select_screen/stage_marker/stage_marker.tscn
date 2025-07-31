@@ -36,9 +36,11 @@ script = ExtResource("3_feh7q")
 
 [node name="StageModulateComponent" type="Node" parent="Components"]
 script = ExtResource("5_w71t7")
-default_modulate = Color(1, 1, 1, 0.588235)
+default_modulate = Color(0.427535, 0.265743, 0.365114, 0.784314)
 hover_modulate = Color(0.392157, 1, 0.588235, 1)
 selected_modulate = Color(0, 0, 1, 1)
+
+[node name="StageZoomComponent" type="Node" parent="Components"]
 
 [node name="States" type="Node" parent="." node_paths=PackedStringArray("idle", "hover", "selected", "initial_state")]
 script = ExtResource("4_feh7q")

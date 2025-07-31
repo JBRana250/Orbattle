@@ -11,6 +11,7 @@ modulate = Color(1, 1, 1, 0.588235)
 script = ExtResource("1_luu4x")
 
 [node name="StageMarkerSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.458405, 0.458405, 0.458405, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_543vb")
 

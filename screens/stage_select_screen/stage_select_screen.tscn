@@ -7,6 +7,17 @@
 
 [node name="StageSelectScreen" type="Node"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+color = Color(0.590742, 0.504053, 0.472684, 1)
+
 [node name="MapSprite" type="Sprite2D" parent="."]
 position = Vector2(970, 500)
 scale = Vector2(0.996692, 1.00682)
@@ -15,49 +26,80 @@ texture = ExtResource("1_abo27")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="GreatPlainsMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="GreatPlainsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1436, 281)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="ArkOfMankindMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="ArkOfMankindMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(1180, 318)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="RemoteVilliageMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="RemoteVilliageMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1329, 209)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="StartingTownMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="StartingTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1280, 362)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="MysticMountainsMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="MysticMountainsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1048, 305)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="FairyForestMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="FairyForestMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1163, 221)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="BanditBayMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="BanditBayMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(952, 267)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="WhimsicalWoodsMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="WhimsicalWoodsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(960, 540)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="BloodIronCountyMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="BloodIronCountyMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1116, 537)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="DwarvenStrongholdMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="DwarvenStrongholdMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(1070, 721)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="FrontierTownMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="FrontierTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(724, 393)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="DisastrousDesertMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="DisastrousDesertMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(800, 706)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="SnowyFieldsMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="SnowyFieldsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(442, 455)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="DemonTownMarker" parent="." instance=ExtResource("2_xhtox")]
+[node name="DemonTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(555, 672)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="DemonKingsCastleMarker" parent="." instance=ExtResource("3_0u3kn")]
+[node name="DemonKingsCastleMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(379, 829)
+stage_select_ui = NodePath("../StageSelectUI")
+camera = NodePath("../Camera2D")
 
-[node name="ScreenSelectUi" parent="." instance=ExtResource("4_5ycrp")]
+[node name="StageSelectUI" parent="." instance=ExtResource("4_5ycrp")]
+visible = false

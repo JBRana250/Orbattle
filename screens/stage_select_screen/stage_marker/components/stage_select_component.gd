@@ -1,6 +1,6 @@
 extends Node
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not Input.is_action_just_pressed("click"):
 		return
 		

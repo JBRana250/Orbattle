@@ -16,6 +16,9 @@ func enter_state(_prev_state, _new_state):
 	is_current_state = true
 	
 	stage_modulate_component.set_modulate_default()
+	if owner in owner.stage_select_ui.current_region_markers:
+		owner.stage_select_ui.current_region_markers.erase(owner)
+		owner.stage_select_ui.on_array_modified()
 	
 	_connect_state_signals()
 

@@ -17,6 +17,13 @@ func enter_state(_prev_state, _new_state):
 	
 	stage_modulate_component.set_modulate_selected()
 	
+	# Append self to the current_region_markers array
+	if !(owner in owner.stage_select_ui.current_region_markers):
+		owner.stage_select_ui.current_region_markers.append(owner)
+		owner.stage_select_ui.on_array_modified()
+	else:
+		print_debug("owner already in the array!")
+	
 	_connect_state_signals()
 
 func exit_state(_prev_state, _new_state):
