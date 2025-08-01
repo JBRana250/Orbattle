@@ -14,10 +14,17 @@ var draggable: bool = false:
 	set(value):
 		if value == true:
 			set_process(true)
+			if draggable == true:
+				return
 			draggable = true
+			MouseMaster.cursor_sprite_master.cursor_to_point.emit()
 		if value == false and is_currently_being_dragged == false:
 			set_process(false)
+			if draggable == false:
+				return
+			MouseMaster.cursor_sprite_master.cursor_to_arrow.emit()
 			draggable = false
+			
 
 @export var hand_resource: HandResource
 @export var null_card_resource: CardResource

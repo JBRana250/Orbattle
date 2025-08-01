@@ -41,6 +41,7 @@ func _on_leave_battlefield():
 	_transition(state_machine.outside_battlefield)
 
 func _on_stop_drag():
+	MouseMaster.cursor_sprite_master.cursor_to_arrow.emit()
 	use_card_component.use_card()
 	if is_instance_valid(owner):
 		_transition(state_machine.idle)

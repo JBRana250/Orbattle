@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://dj1l2ts28jakc"]
+
+[ext_resource type="Texture2D" uid="uid://coasfd211pbqs" path="res://textures/region_marker/region_marker.png" id="1_7vjxw"]
+[ext_resource type="Script" uid="uid://crub7sgyh5nud" path="res://screens/stage_select_screen/region_marker/region_marker.gd" id="1_jtnmf"]
+[ext_resource type="Script" uid="uid://b5uclnuit22x0" path="res://screens/stage_select_screen/region_marker/components/stage_hover_component.gd" id="2_yaikh"]
+[ext_resource type="Script" uid="uid://bo1r2wxdoalqy" path="res://screens/stage_select_screen/region_marker/components/stage_select_component.gd" id="3_feh7q"]
+[ext_resource type="Script" uid="uid://byya45r6y4i1" path="res://mechanisms/states/region_marker/region_marker_fsm.gd" id="4_feh7q"]
+[ext_resource type="Script" uid="uid://cbf5lhsnbontw" path="res://mechanisms/states/region_marker/sm_idle.gd" id="5_k2f7d"]
+[ext_resource type="Script" uid="uid://be6i0uvxww458" path="res://screens/stage_select_screen/region_marker/components/stage_modulate_component.gd" id="5_w71t7"]
+[ext_resource type="Script" uid="uid://5uhtxmpgun5t" path="res://mechanisms/states/region_marker/sm_hover.gd" id="6_jtnmf"]
+[ext_resource type="Script" uid="uid://ciywf01bpjysv" path="res://screens/stage_select_screen/region_marker/components/stage_zoom_component.gd" id="6_usj4q"]
+[ext_resource type="Script" uid="uid://ddhv86wubj11r" path="res://mechanisms/states/region_marker/sm_selected.gd" id="7_w71t7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vjxw"]
+radius = 9.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwuj5"]
+font_size = 8
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.203922)
+
+[node name="RegionMarker" type="Node2D" node_paths=PackedStringArray("region_name_label")]
+modulate = Color(1, 1, 1, 0.588235)
+script = ExtResource("1_jtnmf")
+region_name_label = NodePath("RegionNameContainer/RegionName")
+
+[node name="RegionMarkerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_7vjxw")
+
+[node name="RegionMarkerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMarkerArea"]
+shape = SubResource("CircleShape2D_7vjxw")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="RegionHoverComponent" type="Node" parent="Components"]
+script = ExtResource("2_yaikh")
+
+[node name="RegionSelectComponent" type="Node" parent="Components"]
+script = ExtResource("3_feh7q")
+
+[node name="RegionModulateComponent" type="Node" parent="Components"]
+script = ExtResource("5_w71t7")
+default_modulate = Color(1, 1, 1, 1)
+hover_modulate = Color(0.392157, 1, 0.588235, 1)
+selected_modulate = Color(0.359332, 0.557774, 1, 1)
+
+[node name="RegionZoomComponent" type="Node" parent="Components"]
+script = ExtResource("6_usj4q")
+zoomed_in_value = Vector2(2, 2)
+tween_duration = 0.25
+
+[node name="States" type="Node" parent="." node_paths=PackedStringArray("idle", "hover", "selected", "initial_state")]
+script = ExtResource("4_feh7q")
+idle = NodePath("Idle")
+hover = NodePath("Hover")
+selected = NodePath("Selected")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component", "stage_zoom_component")]
+script = ExtResource("5_k2f7d")
+stage_modulate_component = NodePath("../../Components/RegionModulateComponent")
+stage_zoom_component = NodePath("../../Components/RegionZoomComponent")
+
+[node name="Hover" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component")]
+script = ExtResource("6_jtnmf")
+stage_modulate_component = NodePath("../../Components/RegionModulateComponent")
+
+[node name="Selected" type="Node" parent="States" node_paths=PackedStringArray("stage_modulate_component", "stage_zoom_component")]
+script = ExtResource("7_w71t7")
+stage_modulate_component = NodePath("../../Components/RegionModulateComponent")
+stage_zoom_component = NodePath("../../Components/RegionZoomComponent")
+
+[node name="RegionNameContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(50, 10)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RegionName" type="Label" parent="RegionNameContainer"]
+layout_mode = 2
+text = "{RegionName}"
+label_settings = SubResource("LabelSettings_iwuj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="RegionMarkerArea" to="Components/RegionSelectComponent" method="_on_stage_marker_area_input_event"]
+[connection signal="mouse_entered" from="RegionMarkerArea" to="Components/RegionHoverComponent" method="_on_stage_marker_area_mouse_entered"]
+[connection signal="mouse_exited" from="RegionMarkerArea" to="Components/RegionHoverComponent" method="_on_stage_marker_area_mouse_exited"]

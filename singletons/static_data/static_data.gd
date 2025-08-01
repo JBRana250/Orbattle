@@ -2,10 +2,12 @@ extends Node
 
 var card_data
 var stage_data
+var region_data
 
 @export var card_id_to_image_node: Node
 
 func _ready():
+	region_data = _import_json_file("res://data/Orbattle Region Database.json")
 	stage_data = _import_json_file("res://data/Orbattle Stage Database.json")
 	card_data = _import_json_file("res://data/Orbattle Card Database.json")
 

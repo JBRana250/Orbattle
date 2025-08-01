@@ -42,6 +42,7 @@ func _on_leave_battlefield():
 	_transition(state_machine.outside_battlefield)
 
 func _on_stop_drag():
+	MouseMaster.cursor_sprite_master.cursor_to_arrow.emit()
 	_transition(state_machine.idle)
 
 func _on_become_valid():

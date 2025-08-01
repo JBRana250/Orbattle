@@ -12,15 +12,31 @@ extends Node
 @export var fully_transparent_modulate: Color
 @export var fully_opaque_modulate: Color
 
+var region_data
+
+@export var region_label: Label
+
 # This function NEEDS to be called whenever the above array is modified
+# Makes the UI visible if there is at least one region marker selected
+# Otherwise, sets visibility to false.
 func on_array_modified():
 	if current_region_markers.is_empty():
 		self.visible = false
 		self.modulate = fully_transparent_modulate
 		zoom_out_to_full()
 	else:
+		_obtain_region_data()
+		if region_data != null:
+			region_label.text = region_data["region_name"]
+		else:
+			region_label.text = "{Region Name}"
 		self.visible = true
 		_start_tween(self, "modulate", fully_opaque_modulate, tween_duration)
+		
+func _obtain_region_data():
+	if !(len(current_region_markers) == 1):
+		return
+	region_data = current_region_markers[0].region_data
 
 func zoom_out_to_full():
 	_start_tween(camera, "position", default_position, tween_duration)

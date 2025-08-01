@@ -36,6 +36,7 @@ func _on_enter_battlefield():
 		return
 
 func _on_stop_drag():
+	MouseMaster.cursor_sprite_master.cursor_to_arrow.emit()
 	_transition(state_machine.idle)
 	return
 	

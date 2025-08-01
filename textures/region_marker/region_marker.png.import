@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://coasfd211pbqs"
-path="res://.godot/imported/stage_marker.png-93ee76b8db607f51d46b2c4ec991f7c6.ctex"
+path="res://.godot/imported/region_marker.png-e15e0754fd63b5034ddb14d5429abaea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/stage_marker/stage_marker.png"
-dest_files=["res://.godot/imported/stage_marker.png-93ee76b8db607f51d46b2c4ec991f7c6.ctex"]
+source_file="res://textures/region_marker/region_marker.png"
+dest_files=["res://.godot/imported/region_marker.png-e15e0754fd63b5034ddb14d5429abaea.ctex"]
 
 [params]
 

@@ -18,11 +18,14 @@ func enter_state(_prev_state, _new_state):
 	is_current_state = true
 	
 	stage_modulate_component.set_modulate_hover()
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	
 	_connect_state_signals()
 
 func exit_state(_prev_state, _new_state):
 	is_current_state = false
+	
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
 	_disconnect_state_signals()
 

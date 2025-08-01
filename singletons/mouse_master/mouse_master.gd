@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var cursor_hover_over_control_resource: CursorHoverOverControlResource
-
+@export var cursor_sprite_master: Node
 
 # If mouse is inside an important control, returns true. Otherwise, returns false.
 func _check_mouse_control_overlap() -> bool: 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsty1s3snldgl"]
 
 [ext_resource type="Texture2D" uid="uid://bheonpex0nwsb" path="res://textures/maps/orbattle_fantasia_map.png" id="1_abo27"]
-[ext_resource type="PackedScene" uid="uid://dj1l2ts28jakc" path="res://screens/stage_select_screen/stage_marker/stage_marker.tscn" id="2_xhtox"]
-[ext_resource type="PackedScene" uid="uid://dy7yvjve0w4ut" path="res://screens/stage_select_screen/stage_marker/elite_stage_marker.tscn" id="3_0u3kn"]
+[ext_resource type="PackedScene" uid="uid://dj1l2ts28jakc" path="res://screens/stage_select_screen/region_marker/region_marker.tscn" id="2_xhtox"]
+[ext_resource type="PackedScene" uid="uid://dy7yvjve0w4ut" path="res://screens/stage_select_screen/region_marker/elite_region_marker.tscn" id="3_0u3kn"]
 [ext_resource type="PackedScene" uid="uid://cxf2ehnm8uua6" path="res://screens/stage_select_screen/UI/stage_select_ui.tscn" id="4_5ycrp"]
 
 [node name="StageSelectScreen" type="Node"]
@@ -28,76 +28,91 @@ position = Vector2(960, 540)
 
 [node name="GreatPlainsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1436, 281)
+region_id = "FA_GP"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="ArkOfMankindMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(1180, 318)
+region_id = "FA_AOM"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="RemoteVilliageMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1329, 209)
+region_id = "FA_RV"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="StartingTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1280, 362)
+region_id = "FA_ST"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="MysticMountainsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1048, 305)
+region_id = "FA_MM"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="FairyForestMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1163, 221)
+region_id = "FA_FF"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="BanditBayMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(952, 267)
+region_id = "FA_BB"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="WhimsicalWoodsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(960, 540)
+region_id = "FA_WW"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="BloodIronCountyMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(1116, 537)
+region_id = "FA_BIC"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="DwarvenStrongholdMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(1070, 721)
+region_id = "FA_DS"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="FrontierTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(724, 393)
+region_id = "FA_FT"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="DisastrousDesertMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(800, 706)
+region_id = "FA_DD"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="SnowyFieldsMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(442, 455)
+region_id = "FA_SF"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="DemonTownMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("2_xhtox")]
 position = Vector2(555, 672)
+region_id = "FA_DT"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 
 [node name="DemonKingsCastleMarker" parent="." node_paths=PackedStringArray("stage_select_ui", "camera") instance=ExtResource("3_0u3kn")]
 position = Vector2(379, 829)
+region_id = "FA_DKC"
 stage_select_ui = NodePath("../CanvasLayer/StageSelectUI")
 camera = NodePath("../Camera2D")
 

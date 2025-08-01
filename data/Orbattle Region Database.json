@@ -1,0 +1,43 @@
+{
+  "FA_GP": {
+	"region_name": "Great Plains",
+	"stage_id_array": [
+	  "GP-A1",
+	  "GP-A2",
+	  "GP-A3",
+	  "GP-A4"
+	]
+  },
+  "FA_RV": {
+	"region_name": "Remote Villiage",
+	"stage_id_array": [
+	  "RV-A1",
+	  "RV-A2",
+	  "RV-A3",
+	  "RV-A4",
+	  "RV-A5"
+	]
+  },
+  "FA_FF": {
+	"region_name": "Fairy Forest",
+	"stage_id_array": [
+	  "FF-A1",
+	  "FF-A2",
+	  "FF-A3",
+	  "FF-A4",
+	  "FF-A5",
+	  "FF-A6"
+	]
+  },
+  "FA_ST": {
+	"region_name": "Starting Town",
+	"stage_id_array": [
+	  "ST-A1",
+	  "ST-A2",
+	  "ST-A3",
+	  "ST-A4",
+	  "ST-A5",
+	  "ST-A6"
+	]
+  }
+}

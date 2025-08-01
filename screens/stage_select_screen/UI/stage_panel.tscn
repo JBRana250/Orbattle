@@ -84,6 +84,7 @@ scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(25, 25)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_rwt3k")
 texture_pressed = ExtResource("2_j2hdi")
 ignore_texture_size = true

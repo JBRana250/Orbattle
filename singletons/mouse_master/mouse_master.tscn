@@ -1,8 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnalx450xgho7"]
+[gd_scene load_steps=4 format=3 uid="uid://bnalx450xgho7"]
 
 [ext_resource type="Script" uid="uid://c66yy7xutipun" path="res://singletons/mouse_master/mouse_master.gd" id="1_7d7c2"]
 [ext_resource type="Resource" uid="uid://brh6d46rxnywu" path="res://mechanisms/ui/cursor_hover_over_control_resource.tres" id="2_tmfcw"]
+[ext_resource type="Script" uid="uid://cb18jsejcp2t4" path="res://singletons/mouse_master/cursor_sprite_master.gd" id="3_lgqup"]
 
-[node name="MouseMaster" type="Node2D"]
+[node name="MouseMaster" type="Node2D" node_paths=PackedStringArray("cursor_sprite_master")]
 script = ExtResource("1_7d7c2")
 cursor_hover_over_control_resource = ExtResource("2_tmfcw")
+cursor_sprite_master = NodePath("CursorSpriteMaster")
+
+[node name="CursorSpriteMaster" type="Node" parent="."]
+script = ExtResource("3_lgqup")

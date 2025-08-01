@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bpdb82bb2pt3p"]
+[gd_scene load_steps=25 format=3 uid="uid://bpdb82bb2pt3p"]
 
 [ext_resource type="Script" uid="uid://b4ft8uaj17hb7" path="res://screens/battle_screen/battle_screen_scene.gd" id="1_64jy8"]
 [ext_resource type="Script" uid="uid://cbysrkerddaep" path="res://mechanisms/camera_panning/camera_pan.gd" id="1_tl5f3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://x8hf4jxb5jpd" path="res://textures/deck_altar/deck_altar.png" id="9_r1pxh"]
 [ext_resource type="Resource" uid="uid://kdrsmfb6tfud" path="res://mechanisms/deck/deck_resource/deck_resource.tres" id="11_yswp7"]
 [ext_resource type="Resource" uid="uid://cekx4pw3dmytp" path="res://cards/card_resource/null_card_resource.tres" id="12_eyxvs"]
+[ext_resource type="Script" uid="uid://jmq8yq8ig6k" path="res://screens/battle_screen/battle_screen_ui.gd" id="13_3usd0"]
 [ext_resource type="PackedScene" uid="uid://bmehjem7t84tq" path="res://mechanisms/essence_count/essence_counter.tscn" id="13_eyxvs"]
 [ext_resource type="Texture2D" uid="uid://y0imwbfxofv" path="res://textures/cards/peasant.png" id="15_eyxvs"]
 [ext_resource type="Script" uid="uid://csvyn8sc2fo4c" path="res://mechanisms/deck/cards_manager.gd" id="16_yswp7"]
@@ -124,59 +125,73 @@ deck_resource = ExtResource("11_yswp7")
 graveyard_resource = ExtResource("19_mnm7k")
 hand_resource = ExtResource("19_eyxvs")
 null_card_resource = ExtResource("12_eyxvs")
-pedastal_a = NodePath("../HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotA/PedastalA")
-pedastal_b = NodePath("../HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotB/PedastalB")
-pedastal_c = NodePath("../HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotC/PedastalC")
-pedastal_d = NodePath("../HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotD/PedastalD")
-deck_altar_marker = NodePath("../HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker")
+pedastal_a = NodePath("../BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotA/PedastalA")
+pedastal_b = NodePath("../BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotB/PedastalB")
+pedastal_c = NodePath("../BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotC/PedastalC")
+pedastal_d = NodePath("../BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotD/PedastalD")
+deck_altar_marker = NodePath("../BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker")
 ui_canvas_layer = NodePath("..")
-card_preview = NodePath("../HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker/CardPreview")
+card_preview = NodePath("../BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker/CardPreview")
 card_scene = ExtResource("3_xgjcn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+[node name="BattleScreenUI" type="Control" parent="UI"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="LeftPanel" type="Panel" parent="UI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_ion7m")
+script = ExtResource("13_3usd0")
 
-[node name="LeftVBox" type="VBoxContainer" parent="UI/HBoxContainer/LeftPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/BattleScreenUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Space" type="Control" parent="UI/HBoxContainer/LeftPanel/LeftVBox"]
+[node name="LeftPanel" type="Panel" parent="UI/BattleScreenUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ion7m")
+
+[node name="LeftVBox" type="VBoxContainer" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Space" type="Control" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="EssenceCounterSpace" type="Control" parent="UI/HBoxContainer/LeftPanel/LeftVBox"]
+[node name="EssenceCounterSpace" type="Control" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.9
+mouse_filter = 2
 
-[node name="EssenceCounter" parent="UI/HBoxContainer/LeftPanel/LeftVBox/EssenceCounterSpace" instance=ExtResource("13_eyxvs")]
+[node name="EssenceCounter" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/EssenceCounterSpace" instance=ExtResource("13_eyxvs")]
 position = Vector2(232, 200)
 
-[node name="DeckAltarSpace" type="Control" parent="UI/HBoxContainer/LeftPanel/LeftVBox"]
+[node name="DeckAltarSpace" type="Control" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="DeckAltarTexture" type="TextureRect" parent="UI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace"]
+[node name="DeckAltarTexture" type="TextureRect" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,144 +199,151 @@ anchor_bottom = 1.0
 offset_bottom = 161.1
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("9_r1pxh")
 expand_mode = 5
 
-[node name="DeckAltarMarker" type="Marker2D" parent="UI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture"]
+[node name="DeckAltarMarker" type="Marker2D" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture"]
 position = Vector2(232, -65)
 
-[node name="CardPreview" type="Sprite2D" parent="UI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker"]
+[node name="CardPreview" type="Sprite2D" parent="UI/BattleScreenUI/HBoxContainer/LeftPanel/LeftVBox/DeckAltarSpace/DeckAltarTexture/DeckAltarMarker"]
 visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_eyxvs")
 
-[node name="MiddleVBox" type="VBoxContainer" parent="UI/HBoxContainer"]
+[node name="MiddleVBox" type="VBoxContainer" parent="UI/BattleScreenUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.17
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Space" type="Control" parent="UI/HBoxContainer/MiddleVBox"]
+[node name="Space" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 7.5
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PanelVbox" type="VBoxContainer" parent="UI/HBoxContainer/MiddleVBox"]
+[node name="PanelVbox" type="VBoxContainer" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.27
+mouse_filter = 2
 theme_override_constants/separation = 0
 script = ExtResource("5_4af0x")
 cursor_hover_over_control_resource = ExtResource("6_buayt")
 
-[node name="Space" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox"]
+[node name="Space" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="MiddlePanel" type="Panel" parent="UI/HBoxContainer/MiddleVBox/PanelVbox"]
+[node name="MiddlePanel" type="Panel" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_buayt")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="HandContainer" type="HBoxContainer" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer"]
+[node name="HandContainer" type="HBoxContainer" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="CardSlotA" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="CardSlotA" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PedastalA" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotA" instance=ExtResource("2_4fp31")]
+[node name="PedastalA" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotA" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
 
-[node name="Space" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="Space" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="CardSlotB" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="CardSlotB" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PedastalB" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotB" instance=ExtResource("2_4fp31")]
+[node name="PedastalB" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotB" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
 
-[node name="Space2" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="Space2" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="CardSlotC" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="CardSlotC" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PedastalC" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotC" instance=ExtResource("2_4fp31")]
+[node name="PedastalC" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotC" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
 
-[node name="Space3" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="Space3" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="CardSlotD" type="Control" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
+[node name="CardSlotD" type="Control" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PedastalD" parent="UI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotD" instance=ExtResource("2_4fp31")]
+[node name="PedastalD" parent="UI/BattleScreenUI/HBoxContainer/MiddleVBox/PanelVbox/MiddlePanel/MarginContainer/HandContainer/CardSlotD" instance=ExtResource("2_4fp31")]
 position = Vector2(100, 75)
 
-[node name="RightPanel" type="Panel" parent="UI/HBoxContainer"]
+[node name="RightPanel" type="Panel" parent="UI/BattleScreenUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 1
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ion7m")
 
-[node name="RightVbox" type="VBoxContainer" parent="UI/HBoxContainer/RightPanel"]
+[node name="RightVbox" type="VBoxContainer" parent="UI/BattleScreenUI/HBoxContainer/RightPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Space" type="Control" parent="UI/HBoxContainer/RightPanel/RightVbox"]
+[node name="Space" type="Control" parent="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="Graveyard" type="Control" parent="UI/HBoxContainer/RightPanel/RightVbox"]
+[node name="Graveyard" type="Control" parent="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer/RightPanel/RightVbox/Graveyard"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -329,17 +351,19 @@ anchor_bottom = 1.0
 offset_bottom = 200.685
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 100
 
-[node name="GraveyardTexture" type="TextureRect" parent="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer"]
+[node name="GraveyardTexture" type="TextureRect" parent="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("17_00yqp")
 expand_mode = 5
 
-[node name="RefillDeckButton" type="Button" parent="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture" node_paths=PackedStringArray("cards_manager")]
+[node name="RefillDeckButton" type="Button" parent="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture" node_paths=PackedStringArray("cards_manager")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -347,11 +371,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("21_3usd0")
 deck_resource = ExtResource("11_yswp7")
 graveyard_resource = ExtResource("19_mnm7k")
-cards_manager = NodePath("../../../../../../../CardsManager")
+cards_manager = NodePath("../../../../../../../../CardsManager")
 
-[connection signal="mouse_entered" from="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" to="UI/BattleScreenUI/HBoxContainer/RightPanel/RightVbox/Graveyard/MarginContainer/GraveyardTexture/RefillDeckButton" method="_on_pressed"]

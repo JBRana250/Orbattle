@@ -10,7 +10,6 @@ func _disconnect_state_signals():
 	owner.disconnect("started_dragging", _on_start_dragging)
 
 func enter_state(_prev_state, _new_state):
-	
 	is_current_state = true
 	
 	owner.card_modulate_component.change_modulate_base()
@@ -24,9 +23,11 @@ func exit_state(_prev_state, _new_state):
 	_disconnect_state_signals()
 
 func _transition(state):
+	print_debug("change states")
 	state_machine.set_state(state)
 
 func _on_start_dragging():
+	MouseMaster.cursor_sprite_master.cursor_to_drag.emit()
 	if !owner.is_hovering_over_battlefield:
 		_transition(state_machine.outside_battlefield)
 		return
