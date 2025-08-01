@@ -4,6 +4,7 @@ extends State
 #@onready var state_machine: Node = get_parent()
 
 @export var stage_modulate_component: Node
+@export var stage_zoom_component: Node
 
 func _connect_state_signals():
 	owner.connect("mouse_entered", _on_mouse_hover)

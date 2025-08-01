@@ -4,6 +4,7 @@ extends State
 #@onready var state_machine: Node = get_parent()
 
 @export var stage_modulate_component: Node
+@export var stage_zoom_component: Node
 
 func _connect_state_signals():
 	owner.connect("clicked_elsewhere", _on_clicked_elsewhere)
@@ -16,6 +17,7 @@ func enter_state(_prev_state, _new_state):
 	is_current_state = true
 	
 	stage_modulate_component.set_modulate_selected()
+	stage_zoom_component.zoom_in_on_self()
 	
 	# Append self to the current_region_markers array
 	if !(owner in owner.stage_select_ui.current_region_markers):
